@@ -1,85 +1,68 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+<template>
+  <View360 v-if="projection" showControlBar projectionType="cubemap" ref="viewerRef" class="sds is-16by9" :hotspot="{'zoom':false}"
+           :projection="projection">
+    <div class="view360-hotspots">
+      <div class="view360-hotspot"
+           v-for="(hotspot, i: number) in hotspots"
+           :data-yaw="hotspot.yaw"
+           :data-pitch="hotspot.pitch">
+        <div
+          @click="handleHotspotClick(hotspot)"
+          class="hotspot__item">{{ hotspot.text }}</div>
+      </div>
+    </div>
+  </View360>
+</template>
+<script>
+import { View360, EquirectProjection } from '@egjs/vue3-view360'
+import data from "@/utils/data";
+
+export default {
+  data () {
+    return {
+      name: data,
+      currentProjectionIndex: 1,
+      projection: null
+    }
+  },
+  methods: {
+    handleHotspotClick (h) {
+      this.currentProjectionIndex = h.foreignProjectionIndex + 1
+      this.projection = new EquirectProjection({
+        src: [
+          `/${this.currentProjectionIndex}.jpeg`
+        ]
+      })
+      console.log(this.currentProjectionIndex)
+    }
+  },
+  computed: {
+    hotspots () {
+      console.log(data[this.currentProjectionIndex - 1])
+      return data[this.currentProjectionIndex - 1]
+    }
+  },
+  created () {
+    this.projection = new EquirectProjection({
+      src: [
+        `/${this.currentProjectionIndex}.jpeg`
+      ]
+    })
+  },
+  components: {
+    View360
+  }
+}
 </script>
 
-<template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
-</template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+<style lang="scss">
+//@import "@egjs/view360/css/view360.css";
+.sds {
+  canvas {
+    width: 1280px;
+    height: 720px;
   }
 }
+
 </style>
+

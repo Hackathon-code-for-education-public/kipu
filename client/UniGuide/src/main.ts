@@ -5,6 +5,7 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+import {View360} from "@egjs/vue3-view360";
 
 const app = createApp(App)
 
