@@ -1,0 +1,29 @@
+{
+  "name": "UserToUniversity",
+  "fields": [
+    {
+      "fieldName": "scienceDegree",
+      "fieldType": "ScienceDegree",
+      "fieldValues": "BACHELOR,MAGISTER,ASPIRANT,ABITURIENT,UNDERGRADUADE,COLLEGE"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "university",
+      "otherEntityRelationshipName": "id",
+      "relationshipName": "universityId",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "user_to_university",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["hackatonapp"],
+  "changelogDate": "20240420152718"
+}

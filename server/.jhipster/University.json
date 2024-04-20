@@ -1,0 +1,100 @@
+{
+  "name": "University",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "desciption",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "site",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumbers",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emails",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "schedule",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "responsiblePerson",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "userToUniversity",
+      "otherEntityRelationshipName": "universityId",
+      "relationshipName": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "university",
+      "relationshipName": "products"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "university",
+      "relationshipName": "images"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "comment",
+      "otherEntityRelationshipName": "university",
+      "relationshipName": "comments"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "album",
+      "otherEntityRelationshipName": "university",
+      "relationshipName": "albums"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "files",
+      "otherEntityRelationshipName": "university",
+      "relationshipName": "files"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "direction",
+      "otherEntityRelationshipName": "university",
+      "relationshipName": "directions"
+    }
+  ],
+  "entityTableName": "university",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["hackatonapp"],
+  "changelogDate": "20240420152716"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Album",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "university",
+      "otherEntityRelationshipName": "albums",
+      "relationshipName": "university"
+    }
+  ],
+  "entityTableName": "album",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["hackatonapp"],
+  "changelogDate": "20240420152717"
+}

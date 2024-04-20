@@ -1,0 +1,25 @@
+{
+  "hackatonappApp": {
+    "userToUniversity": {
+      "home": {
+        "title": "User To Universities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User To University",
+        "createOrEditLabel": "Create or edit a User To University",
+        "notFound": "No User To Universities found"
+      },
+      "created": "A new User To University is created with identifier {{ param }}",
+      "updated": "A User To University is updated with identifier {{ param }}",
+      "deleted": "A User To University is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User To University {{ id }}?"
+      },
+      "detail": {
+        "title": "User To University"
+      },
+      "id": "ID",
+      "scienceDegree": "Science Degree",
+      "universityId": "University Id"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Admission",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "university",
+      "otherEntityRelationshipName": "admission",
+      "relationshipName": "university",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "direction",
+      "otherEntityRelationshipName": "admission",
+      "relationshipName": "direction",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "profile",
+      "otherEntityRelationshipName": "admissions",
+      "relationshipName": "profile"
+    }
+  ],
+  "entityTableName": "admission",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["hackatonapp"],
+  "changelogDate": "20240420152724"
+}

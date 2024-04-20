@@ -1,0 +1,59 @@
+{
+  "name": "Profile",
+  "fields": [
+    {
+      "fieldName": "fullName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rating",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "userToUniversity",
+      "otherEntityRelationshipName": "profile",
+      "relationshipName": "userId",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "profile",
+      "relationshipName": "avatar",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "admission",
+      "otherEntityRelationshipName": "profile",
+      "relationshipName": "admissions"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "files",
+      "otherEntityRelationshipName": "profile",
+      "relationshipName": "files"
+    }
+  ],
+  "entityTableName": "profile",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["hackatonapp"],
+  "changelogDate": "20240420152715"
+}

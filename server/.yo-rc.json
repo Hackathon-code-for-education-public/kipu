@@ -1,0 +1,69 @@
+{
+  "generator-jhipster": {
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "clientFramework": "vue",
+    "serverPort": "8080",
+    "serviceDiscoveryType": false,
+    "skipUserManagement": false,
+    "withAdminUi": true,
+    "baseName": "hackatonapp",
+    "buildTool": "maven",
+    "databaseType": "sql",
+    "devDatabaseType": "sqlite",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": ["en"],
+    "messageBroker": false,
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "skipClient": false,
+    "testFrameworks": [],
+    "websocket": false,
+    "applicationType": "monolith",
+    "jhipsterVersion": "7.0.1",
+    "skipServer": false,
+    "packageFolder": "com/mycompany/myapp",
+    "packageName": "com.jhipster.node",
+    "clientPackageManager": "npm",
+    "dtoSuffix": "DTO",
+    "entitySuffix": "",
+    "reactive": false,
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "entities": [
+      "Profile",
+      "University",
+      "Album",
+      "UserToUniversity",
+      "Comment",
+      "Image",
+      "Files",
+      "Direction",
+      "EntrySubject",
+      "Admission",
+      "Product"
+    ],
+    "blueprints": [
+      {
+        "name": "generator-jhipster-nodejs",
+        "version": "2.0.0"
+      }
+    ],
+    "otherModules": [
+      {
+        "name": "generator-jhipster-nodejs",
+        "version": "2.0.0"
+      }
+    ],
+    "skipCheckLengthOfIdentifier": false,
+    "skipFakeData": false,
+    "pages": [],
+    "creationTimestamp": 1713626779262,
+    "jwtSecretKey": "NjhhNzk3MDk0MWVhMTFlY2QyMTY0OGZhMjJkMGM4YTU3OGNkNTY2Y2MzMWUzNGFkNGIwMjk1NDU5NjBlMzM2OWU3NDVmYTYwZGEzYTVlNDMzOGVhN2I3MDE1MDNmMWUxODIwOGY3OTliY2E5M2FhOTcyZDQ2M2FjODlmNjE5Mjk=",
+    "nativeLanguage": "en",
+    "lastLiquibaseTimestamp": 1713626845000
+  }
+}

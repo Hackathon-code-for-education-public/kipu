@@ -1,0 +1,26 @@
+{
+  "hackatonappApp": {
+    "admission": {
+      "home": {
+        "title": "Admissions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Admission",
+        "createOrEditLabel": "Create or edit a Admission",
+        "notFound": "No Admissions found"
+      },
+      "created": "A new Admission is created with identifier {{ param }}",
+      "updated": "A Admission is updated with identifier {{ param }}",
+      "deleted": "A Admission is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Admission {{ id }}?"
+      },
+      "detail": {
+        "title": "Admission"
+      },
+      "id": "ID",
+      "university": "University",
+      "direction": "Direction",
+      "profile": "Profile"
+    }
+  }
+}

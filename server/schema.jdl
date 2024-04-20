@@ -1,0 +1,123 @@
+application {
+  config {
+    baseName hackatonapp
+    applicationType	monolith
+    clientFramework vue
+  }
+  entities *
+}
+entity Profile {
+  fullName String
+  phoneNumber String
+  description String
+  rating Integer
+}
+
+enum Role {
+  ABITURIENT,
+  COLLEGE,
+  SUPERADMIN,
+  EO_ADMIN,
+  EO_OWNER
+}
+
+entity University {
+  name String
+  desciption String
+  address String
+  phoneNumber String
+  email String
+  site String,
+  phoneNumbers String
+  emails String
+  schedule String,
+  responsiblePerson String
+}
+
+entity Album {
+	name String
+}
+
+entity UserToUniversity {
+	scienceDegree ScienceDegree
+}
+
+entity Comment {
+  content String
+  rate Integer
+}
+
+entity Image {
+  imageURL String
+  date Instant
+}
+
+entity Files {
+  url String,
+  type FileType,
+  description String
+}
+
+entity Direction {
+  name String
+}
+
+entity EntrySubject {
+  name String
+  minimumScore Integer
+  examDate Instant
+}
+
+entity Admission {}
+
+entity Product {
+  name String
+  price Integer 
+  description String
+}
+
+enum ScienceDegree {
+	BACHELOR,
+    MAGISTER,
+    ASPIRANT,
+    ABITURIENT,
+    UNDERGRADUADE,
+    COLLEGE
+}
+
+enum FileType {
+	EO,
+    DINING_ROOM,
+    DORMITIRY_ROOM,
+    LECTURE_ROOM,
+    ASSEMBLY_HALL,
+    OTHER
+}
+
+relationship OneToMany { 
+    University{products} to Product
+    Comment{images} to Image
+    University{images} to Image
+    University{comments} to Comment
+    University{albums} to Album
+    University{files} to Files
+    Direction{disciplines} to EntrySubject
+    University{directions} to Direction
+    Product{images} to Image
+    Profile{admissions} to Admission
+    Profile{files} to Files
+}
+
+relationship OneToOne {
+	Profile{userId} to UserToUniversity
+	University{id} to UserToUniversity{universityId}
+    Profile{avatar} to Image
+    Admission{university} to University
+    Admission{direction} to Direction
+}
+
+relationship ManyToOne {
+	Comment{user} to Profile
+}
+
+

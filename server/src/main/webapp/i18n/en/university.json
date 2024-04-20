@@ -1,0 +1,40 @@
+{
+  "hackatonappApp": {
+    "university": {
+      "home": {
+        "title": "Universities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new University",
+        "createOrEditLabel": "Create or edit a University",
+        "notFound": "No Universities found"
+      },
+      "created": "A new University is created with identifier {{ param }}",
+      "updated": "A University is updated with identifier {{ param }}",
+      "deleted": "A University is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete University {{ id }}?"
+      },
+      "detail": {
+        "title": "University"
+      },
+      "id": "ID",
+      "name": "Name",
+      "desciption": "Desciption",
+      "address": "Address",
+      "phoneNumber": "Phone Number",
+      "email": "Email",
+      "site": "Site",
+      "phoneNumbers": "Phone Numbers",
+      "emails": "Emails",
+      "schedule": "Schedule",
+      "responsiblePerson": "Responsible Person",
+      "id": "Id",
+      "products": "Products",
+      "images": "Images",
+      "comments": "Comments",
+      "albums": "Albums",
+      "files": "Files",
+      "directions": "Directions"
+    }
+  }
+}

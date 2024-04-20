@@ -1,0 +1,35 @@
+{
+  "name": "EntrySubject",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "minimumScore",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "examDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "direction",
+      "otherEntityRelationshipName": "disciplines",
+      "relationshipName": "direction"
+    }
+  ],
+  "entityTableName": "entry_subject",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["hackatonapp"],
+  "changelogDate": "20240420152723"
+}

@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  hackatonapp-app:
+    build: ../../..
+    container_name: hackatonapp-app
+    environment:
+    ports:
+      - 8080:8080

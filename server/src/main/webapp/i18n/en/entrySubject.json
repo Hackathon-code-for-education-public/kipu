@@ -1,0 +1,27 @@
+{
+  "hackatonappApp": {
+    "entrySubject": {
+      "home": {
+        "title": "Entry Subjects",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Entry Subject",
+        "createOrEditLabel": "Create or edit a Entry Subject",
+        "notFound": "No Entry Subjects found"
+      },
+      "created": "A new Entry Subject is created with identifier {{ param }}",
+      "updated": "A Entry Subject is updated with identifier {{ param }}",
+      "deleted": "A Entry Subject is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Entry Subject {{ id }}?"
+      },
+      "detail": {
+        "title": "Entry Subject"
+      },
+      "id": "ID",
+      "name": "Name",
+      "minimumScore": "Minimum Score",
+      "examDate": "Exam Date",
+      "direction": "Direction"
+    }
+  }
+}

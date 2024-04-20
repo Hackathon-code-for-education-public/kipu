@@ -1,0 +1,42 @@
+{
+  "name": "Files",
+  "fields": [
+    {
+      "fieldName": "url",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "FileType",
+      "fieldValues": "EO,DINING_ROOM,DORMITIRY_ROOM,LECTURE_ROOM,ASSEMBLY_HALL,OTHER"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "university",
+      "otherEntityRelationshipName": "files",
+      "relationshipName": "university"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "profile",
+      "otherEntityRelationshipName": "files",
+      "relationshipName": "profile"
+    }
+  ],
+  "entityTableName": "files",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["hackatonapp"],
+  "changelogDate": "20240420152721"
+}
