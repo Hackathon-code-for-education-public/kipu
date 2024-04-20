@@ -44,9 +44,6 @@ export class UniversityDTO extends BaseDTO {
     @ApiModelProperty({ description: 'responsiblePerson field', required: false })
     responsiblePerson: string;
 
-    @ApiModelProperty({ type: UserToUniversityDTO, description: 'id relationship' })
-    id: UserToUniversityDTO;
-
     @ApiModelProperty({ type: ProductDTO, isArray: true, description: 'products relationship' })
     products: ProductDTO[];
 
