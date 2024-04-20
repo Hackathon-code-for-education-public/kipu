@@ -17,13 +17,13 @@ export class Image extends BaseEntity {
     @Column({ type: 'datetime', name: 'date', nullable: true })
     date: any;
 
-    @ManyToOne((type) => Comment)
+    @ManyToOne(type => Comment)
     comment: Comment;
 
-    @ManyToOne((type) => University)
+    @ManyToOne(type => University)
     university: University;
 
-    @ManyToOne((type) => Product)
+    @ManyToOne(type => Product)
     product: Product;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

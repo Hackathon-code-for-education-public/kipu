@@ -31,7 +31,7 @@ export class UserToUniversityService {
         const resultList = await this.userToUniversityRepository.findAndCount(options);
         const userToUniversityDTO: UserToUniversityDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach((userToUniversity) =>
+            resultList[0].forEach(userToUniversity =>
                 userToUniversityDTO.push(UserToUniversityMapper.fromEntityToDTO(userToUniversity)),
             );
             resultList[0] = userToUniversityDTO;

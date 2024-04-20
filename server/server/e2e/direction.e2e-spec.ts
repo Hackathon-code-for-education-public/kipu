@@ -41,8 +41,11 @@ describe('Direction Controller', () => {
     });
 
     it('/GET all directions ', async () => {
-        const getEntities: DirectionDTO[] = (await request(app.getHttpServer()).get('/api/directions').expect(200))
-            .body;
+        const getEntities: DirectionDTO[] = (
+            await request(app.getHttpServer())
+                .get('/api/directions')
+                .expect(200)
+        ).body;
 
         expect(getEntities).toEqual(entityMock);
     });
@@ -59,7 +62,10 @@ describe('Direction Controller', () => {
 
     it('/POST create directions', async () => {
         const createdEntity: DirectionDTO = (
-            await request(app.getHttpServer()).post('/api/directions').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/directions')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
@@ -67,7 +73,10 @@ describe('Direction Controller', () => {
 
     it('/PUT update directions', async () => {
         const updatedEntity: DirectionDTO = (
-            await request(app.getHttpServer()).put('/api/directions').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .put('/api/directions')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);

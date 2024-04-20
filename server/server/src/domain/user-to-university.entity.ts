@@ -13,7 +13,7 @@ export class UserToUniversity extends BaseEntity {
     @Column({ type: 'simple-enum', name: 'science_degree', enum: ScienceDegree })
     scienceDegree: ScienceDegree;
 
-    @OneToOne((type) => University)
+    @OneToOne(type => University)
     universityId: University;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

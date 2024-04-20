@@ -9,9 +9,9 @@ export class CommentMapper {
         if (!entityDTO) {
             return;
         }
-        let entity = new Comment();
+        const entity = new Comment();
         const fields = Object.getOwnPropertyNames(entityDTO);
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entity[field] = entityDTO[field];
         });
         return entity;
@@ -21,11 +21,11 @@ export class CommentMapper {
         if (!entity) {
             return;
         }
-        let entityDTO = new CommentDTO();
+        const entityDTO = new CommentDTO();
 
         const fields = Object.getOwnPropertyNames(entity);
 
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entityDTO[field] = entity[field];
         });
 

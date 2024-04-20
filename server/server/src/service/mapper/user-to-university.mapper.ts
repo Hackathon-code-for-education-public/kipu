@@ -9,9 +9,9 @@ export class UserToUniversityMapper {
         if (!entityDTO) {
             return;
         }
-        let entity = new UserToUniversity();
+        const entity = new UserToUniversity();
         const fields = Object.getOwnPropertyNames(entityDTO);
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entity[field] = entityDTO[field];
         });
         return entity;
@@ -21,11 +21,11 @@ export class UserToUniversityMapper {
         if (!entity) {
             return;
         }
-        let entityDTO = new UserToUniversityDTO();
+        const entityDTO = new UserToUniversityDTO();
 
         const fields = Object.getOwnPropertyNames(entity);
 
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entityDTO[field] = entity[field];
         });
 

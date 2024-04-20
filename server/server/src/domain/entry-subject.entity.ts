@@ -18,7 +18,7 @@ export class EntrySubject extends BaseEntity {
     @Column({ type: 'datetime', name: 'exam_date', nullable: true })
     examDate: any;
 
-    @ManyToOne((type) => Direction)
+    @ManyToOne(type => Direction)
     direction: Direction;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

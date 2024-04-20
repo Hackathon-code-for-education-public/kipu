@@ -20,10 +20,10 @@ export class Files extends BaseEntity {
     @Column({ name: 'description', nullable: true })
     description: string;
 
-    @ManyToOne((type) => University)
+    @ManyToOne(type => University)
     university: University;
 
-    @ManyToOne((type) => Profile)
+    @ManyToOne(type => Profile)
     profile: Profile;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

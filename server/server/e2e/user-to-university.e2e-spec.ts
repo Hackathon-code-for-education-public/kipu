@@ -42,7 +42,9 @@ describe('UserToUniversity Controller', () => {
 
     it('/GET all user-to-universities ', async () => {
         const getEntities: UserToUniversityDTO[] = (
-            await request(app.getHttpServer()).get('/api/user-to-universities').expect(200)
+            await request(app.getHttpServer())
+                .get('/api/user-to-universities')
+                .expect(200)
         ).body;
 
         expect(getEntities).toEqual(entityMock);
@@ -60,7 +62,10 @@ describe('UserToUniversity Controller', () => {
 
     it('/POST create user-to-universities', async () => {
         const createdEntity: UserToUniversityDTO = (
-            await request(app.getHttpServer()).post('/api/user-to-universities').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/user-to-universities')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
@@ -68,7 +73,10 @@ describe('UserToUniversity Controller', () => {
 
     it('/PUT update user-to-universities', async () => {
         const updatedEntity: UserToUniversityDTO = (
-            await request(app.getHttpServer()).put('/api/user-to-universities').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .put('/api/user-to-universities')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);

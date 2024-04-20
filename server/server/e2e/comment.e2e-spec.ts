@@ -41,7 +41,11 @@ describe('Comment Controller', () => {
     });
 
     it('/GET all comments ', async () => {
-        const getEntities: CommentDTO[] = (await request(app.getHttpServer()).get('/api/comments').expect(200)).body;
+        const getEntities: CommentDTO[] = (
+            await request(app.getHttpServer())
+                .get('/api/comments')
+                .expect(200)
+        ).body;
 
         expect(getEntities).toEqual(entityMock);
     });
@@ -58,7 +62,10 @@ describe('Comment Controller', () => {
 
     it('/POST create comments', async () => {
         const createdEntity: CommentDTO = (
-            await request(app.getHttpServer()).post('/api/comments').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/comments')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
@@ -66,7 +73,10 @@ describe('Comment Controller', () => {
 
     it('/PUT update comments', async () => {
         const updatedEntity: CommentDTO = (
-            await request(app.getHttpServer()).put('/api/comments').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .put('/api/comments')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);

@@ -41,7 +41,11 @@ describe('Image Controller', () => {
     });
 
     it('/GET all images ', async () => {
-        const getEntities: ImageDTO[] = (await request(app.getHttpServer()).get('/api/images').expect(200)).body;
+        const getEntities: ImageDTO[] = (
+            await request(app.getHttpServer())
+                .get('/api/images')
+                .expect(200)
+        ).body;
 
         expect(getEntities).toEqual(entityMock);
     });
@@ -58,7 +62,10 @@ describe('Image Controller', () => {
 
     it('/POST create images', async () => {
         const createdEntity: ImageDTO = (
-            await request(app.getHttpServer()).post('/api/images').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/images')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
@@ -66,7 +73,10 @@ describe('Image Controller', () => {
 
     it('/PUT update images', async () => {
         const updatedEntity: ImageDTO = (
-            await request(app.getHttpServer()).put('/api/images').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .put('/api/images')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);

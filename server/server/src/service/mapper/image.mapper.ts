@@ -9,9 +9,9 @@ export class ImageMapper {
         if (!entityDTO) {
             return;
         }
-        let entity = new Image();
+        const entity = new Image();
         const fields = Object.getOwnPropertyNames(entityDTO);
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entity[field] = entityDTO[field];
         });
         return entity;
@@ -21,11 +21,11 @@ export class ImageMapper {
         if (!entity) {
             return;
         }
-        let entityDTO = new ImageDTO();
+        const entityDTO = new ImageDTO();
 
         const fields = Object.getOwnPropertyNames(entity);
 
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entityDTO[field] = entity[field];
         });
 

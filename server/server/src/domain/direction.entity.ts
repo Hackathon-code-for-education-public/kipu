@@ -13,10 +13,13 @@ export class Direction extends BaseEntity {
     @Column({ name: 'name', nullable: true })
     name: string;
 
-    @OneToMany((type) => EntrySubject, (other) => other.direction)
+    @OneToMany(
+        type => EntrySubject,
+        other => other.direction,
+    )
     disciplines: EntrySubject[];
 
-    @ManyToOne((type) => University)
+    @ManyToOne(type => University)
     university: University;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

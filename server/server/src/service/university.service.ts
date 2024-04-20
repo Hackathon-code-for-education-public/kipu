@@ -29,7 +29,7 @@ export class UniversityService {
         const resultList = await this.universityRepository.findAndCount(options);
         const universityDTO: UniversityDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach((university) => universityDTO.push(UniversityMapper.fromEntityToDTO(university)));
+            resultList[0].forEach(university => universityDTO.push(UniversityMapper.fromEntityToDTO(university)));
             resultList[0] = universityDTO;
         }
         return resultList;

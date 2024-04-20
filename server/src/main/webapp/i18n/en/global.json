@@ -7,17 +7,6 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
-        "profile": "Profile",
-        "university": "University",
-        "album": "Album",
-        "userToUniversity": "User To University",
-        "comment": "Comment",
-        "image": "Image",
-        "files": "Files",
-        "direction": "Direction",
-        "entrySubject": "Entry Subject",
-        "admission": "Admission",
-        "product": "Product",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

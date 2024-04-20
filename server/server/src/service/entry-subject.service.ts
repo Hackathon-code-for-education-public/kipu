@@ -30,7 +30,7 @@ export class EntrySubjectService {
         const resultList = await this.entrySubjectRepository.findAndCount(options);
         const entrySubjectDTO: EntrySubjectDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach((entrySubject) =>
+            resultList[0].forEach(entrySubject =>
                 entrySubjectDTO.push(EntrySubjectMapper.fromEntityToDTO(entrySubject)),
             );
             resultList[0] = entrySubjectDTO;

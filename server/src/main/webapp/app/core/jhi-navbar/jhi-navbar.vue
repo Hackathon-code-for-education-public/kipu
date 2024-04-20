@@ -29,51 +29,14 @@
             <font-awesome-icon icon="th-list" />
             <span class="no-bold" v-text="$t('global.menu.entities.main')">Entities</span>
           </span>
-          <b-dropdown-item to="/profile">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.profile')">Profile</span>
+          <b-dropdown-item to="/entities/admission" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>Admission</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/university">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.university')">University</span>
+          <b-dropdown-item to="/entities/university" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>University</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/album">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.album')">Album</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/user-to-university">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.userToUniversity')">User To University</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/comment">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.comment')">Comment</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/image">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.image')">Image</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/files">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.files')">Files</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/direction">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.direction')">Direction</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/entry-subject">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.entrySubject')">Entry Subject</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/admission">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.admission')">Admission</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/product">
-            <font-awesome-icon icon="asterisk" />
-            <span v-text="$t('global.menu.entities.product')">Product</span>
-          </b-dropdown-item>
-          <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </b-nav-item-dropdown>
         <b-nav-item-dropdown
           right

@@ -9,9 +9,9 @@ export class AdmissionMapper {
         if (!entityDTO) {
             return;
         }
-        let entity = new Admission();
+        const entity = new Admission();
         const fields = Object.getOwnPropertyNames(entityDTO);
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entity[field] = entityDTO[field];
         });
         return entity;
@@ -21,11 +21,11 @@ export class AdmissionMapper {
         if (!entity) {
             return;
         }
-        let entityDTO = new AdmissionDTO();
+        const entityDTO = new AdmissionDTO();
 
         const fields = Object.getOwnPropertyNames(entity);
 
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entityDTO[field] = entity[field];
         });
 

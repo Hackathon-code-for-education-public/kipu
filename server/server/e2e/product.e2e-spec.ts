@@ -41,7 +41,11 @@ describe('Product Controller', () => {
     });
 
     it('/GET all products ', async () => {
-        const getEntities: ProductDTO[] = (await request(app.getHttpServer()).get('/api/products').expect(200)).body;
+        const getEntities: ProductDTO[] = (
+            await request(app.getHttpServer())
+                .get('/api/products')
+                .expect(200)
+        ).body;
 
         expect(getEntities).toEqual(entityMock);
     });
@@ -58,7 +62,10 @@ describe('Product Controller', () => {
 
     it('/POST create products', async () => {
         const createdEntity: ProductDTO = (
-            await request(app.getHttpServer()).post('/api/products').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/products')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
@@ -66,7 +73,10 @@ describe('Product Controller', () => {
 
     it('/PUT update products', async () => {
         const updatedEntity: ProductDTO = (
-            await request(app.getHttpServer()).put('/api/products').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .put('/api/products')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);

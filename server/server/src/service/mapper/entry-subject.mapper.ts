@@ -9,9 +9,9 @@ export class EntrySubjectMapper {
         if (!entityDTO) {
             return;
         }
-        let entity = new EntrySubject();
+        const entity = new EntrySubject();
         const fields = Object.getOwnPropertyNames(entityDTO);
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entity[field] = entityDTO[field];
         });
         return entity;
@@ -21,11 +21,11 @@ export class EntrySubjectMapper {
         if (!entity) {
             return;
         }
-        let entityDTO = new EntrySubjectDTO();
+        const entityDTO = new EntrySubjectDTO();
 
         const fields = Object.getOwnPropertyNames(entity);
 
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entityDTO[field] = entity[field];
         });
 

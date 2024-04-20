@@ -45,26 +45,40 @@ export class University extends BaseEntity {
     @Column({ name: 'responsible_person', nullable: true })
     responsiblePerson: string;
 
-    @OneToOne((type) => UserToUniversity)
-    @JoinColumn()
-    id: UserToUniversity;
-
-    @OneToMany((type) => Product, (other) => other.university)
+    @OneToMany(
+        type => Product,
+        other => other.university,
+    )
     products: Product[];
 
-    @OneToMany((type) => Image, (other) => other.university)
+    @OneToMany(
+        type => Image,
+        other => other.university,
+    )
     images: Image[];
 
-    @OneToMany((type) => Comment, (other) => other.university)
+    @OneToMany(
+        type => Comment,
+        other => other.university,
+    )
     comments: Comment[];
 
-    @OneToMany((type) => Album, (other) => other.university)
+    @OneToMany(
+        type => Album,
+        other => other.university,
+    )
     albums: Album[];
 
-    @OneToMany((type) => Files, (other) => other.university)
+    @OneToMany(
+        type => Files,
+        other => other.university,
+    )
     files: Files[];
 
-    @OneToMany((type) => Direction, (other) => other.university)
+    @OneToMany(
+        type => Direction,
+        other => other.university,
+    )
     directions: Direction[];
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

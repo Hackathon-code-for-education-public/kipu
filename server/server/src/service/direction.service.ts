@@ -30,7 +30,7 @@ export class DirectionService {
         const resultList = await this.directionRepository.findAndCount(options);
         const directionDTO: DirectionDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach((direction) => directionDTO.push(DirectionMapper.fromEntityToDTO(direction)));
+            resultList[0].forEach(direction => directionDTO.push(DirectionMapper.fromEntityToDTO(direction)));
             resultList[0] = directionDTO;
         }
         return resultList;

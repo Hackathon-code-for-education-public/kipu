@@ -32,7 +32,7 @@ export class ImageService {
         const resultList = await this.imageRepository.findAndCount(options);
         const imageDTO: ImageDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach((image) => imageDTO.push(ImageMapper.fromEntityToDTO(image)));
+            resultList[0].forEach(image => imageDTO.push(ImageMapper.fromEntityToDTO(image)));
             resultList[0] = imageDTO;
         }
         return resultList;

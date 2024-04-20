@@ -18,7 +18,6 @@ export interface IUniversity {
   emails?: string | null;
   schedule?: string | null;
   responsiblePerson?: string | null;
-  id?: IUserToUniversity | null;
   products?: IProduct[] | null;
   images?: IImage[] | null;
   comments?: IComment[] | null;
@@ -40,7 +39,6 @@ export class University implements IUniversity {
     public emails?: string | null,
     public schedule?: string | null,
     public responsiblePerson?: string | null,
-    public id?: IUserToUniversity | null,
     public products?: IProduct[] | null,
     public images?: IImage[] | null,
     public comments?: IComment[] | null,

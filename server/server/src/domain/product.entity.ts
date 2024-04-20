@@ -19,10 +19,13 @@ export class Product extends BaseEntity {
     @Column({ name: 'description', nullable: true })
     description: string;
 
-    @OneToMany((type) => Image, (other) => other.product)
+    @OneToMany(
+        type => Image,
+        other => other.product,
+    )
     images: Image[];
 
-    @ManyToOne((type) => University)
+    @ManyToOne(type => University)
     university: University;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

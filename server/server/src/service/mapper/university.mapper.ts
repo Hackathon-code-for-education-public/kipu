@@ -9,9 +9,9 @@ export class UniversityMapper {
         if (!entityDTO) {
             return;
         }
-        let entity = new University();
+        const entity = new University();
         const fields = Object.getOwnPropertyNames(entityDTO);
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entity[field] = entityDTO[field];
         });
         return entity;
@@ -21,11 +21,11 @@ export class UniversityMapper {
         if (!entity) {
             return;
         }
-        let entityDTO = new UniversityDTO();
+        const entityDTO = new UniversityDTO();
 
         const fields = Object.getOwnPropertyNames(entity);
 
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entityDTO[field] = entity[field];
         });
 

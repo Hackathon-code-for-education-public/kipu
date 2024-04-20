@@ -4,17 +4,6 @@ import { AuthModule } from './module/auth.module';
 import { ormConfig } from './orm.config';
 import { config } from './config';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { ProfileModule } from './module/profile.module';
-import { UniversityModule } from './module/university.module';
-import { AlbumModule } from './module/album.module';
-import { UserToUniversityModule } from './module/user-to-university.module';
-import { CommentModule } from './module/comment.module';
-import { ImageModule } from './module/image.module';
-import { FilesModule } from './module/files.module';
-import { DirectionModule } from './module/direction.module';
-import { EntrySubjectModule } from './module/entry-subject.module';
-import { AdmissionModule } from './module/admission.module';
-import { ProductModule } from './module/product.module';
 // jhipster-needle-add-entity-module-to-main-import - JHipster will import entity modules here, do not remove
 // jhipster-needle-add-controller-module-to-main-import - JHipster will import controller modules here, do not remove
 // jhipster-needle-add-service-module-to-main-import - JHipster will import service modules here, do not remove
@@ -26,17 +15,6 @@ import { ProductModule } from './module/product.module';
             rootPath: config.getClientPath(),
         }),
         AuthModule,
-        ProfileModule,
-        UniversityModule,
-        AlbumModule,
-        UserToUniversityModule,
-        CommentModule,
-        ImageModule,
-        FilesModule,
-        DirectionModule,
-        EntrySubjectModule,
-        AdmissionModule,
-        ProductModule,
         // jhipster-needle-add-entity-module-to-main - JHipster will add entity modules here, do not remove
     ],
     controllers: [

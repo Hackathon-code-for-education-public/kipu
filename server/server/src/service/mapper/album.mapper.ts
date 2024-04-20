@@ -9,9 +9,9 @@ export class AlbumMapper {
         if (!entityDTO) {
             return;
         }
-        let entity = new Album();
+        const entity = new Album();
         const fields = Object.getOwnPropertyNames(entityDTO);
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entity[field] = entityDTO[field];
         });
         return entity;
@@ -21,11 +21,11 @@ export class AlbumMapper {
         if (!entity) {
             return;
         }
-        let entityDTO = new AlbumDTO();
+        const entityDTO = new AlbumDTO();
 
         const fields = Object.getOwnPropertyNames(entity);
 
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entityDTO[field] = entity[field];
         });
 

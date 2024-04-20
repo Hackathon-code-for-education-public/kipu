@@ -30,7 +30,7 @@ export class ProductService {
         const resultList = await this.productRepository.findAndCount(options);
         const productDTO: ProductDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach((product) => productDTO.push(ProductMapper.fromEntityToDTO(product)));
+            resultList[0].forEach(product => productDTO.push(ProductMapper.fromEntityToDTO(product)));
             resultList[0] = productDTO;
         }
         return resultList;

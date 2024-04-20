@@ -31,7 +31,7 @@ export class CommentService {
         const resultList = await this.commentRepository.findAndCount(options);
         const commentDTO: CommentDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach((comment) => commentDTO.push(CommentMapper.fromEntityToDTO(comment)));
+            resultList[0].forEach(comment => commentDTO.push(CommentMapper.fromEntityToDTO(comment)));
             resultList[0] = commentDTO;
         }
         return resultList;

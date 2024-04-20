@@ -11,15 +11,15 @@ import { Profile } from './profile.entity';
  */
 @Entity('admission')
 export class Admission extends BaseEntity {
-    @OneToOne((type) => University)
+    @OneToOne(type => University)
     @JoinColumn()
     university: University;
 
-    @OneToOne((type) => Direction)
+    @OneToOne(type => Direction)
     @JoinColumn()
     direction: Direction;
 
-    @ManyToOne((type) => Profile)
+    @ManyToOne(type => Profile)
     profile: Profile;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

@@ -29,7 +29,7 @@ export class ProfileService {
         const resultList = await this.profileRepository.findAndCount(options);
         const profileDTO: ProfileDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach((profile) => profileDTO.push(ProfileMapper.fromEntityToDTO(profile)));
+            resultList[0].forEach(profile => profileDTO.push(ProfileMapper.fromEntityToDTO(profile)));
             resultList[0] = profileDTO;
         }
         return resultList;

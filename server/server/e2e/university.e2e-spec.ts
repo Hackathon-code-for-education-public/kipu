@@ -41,8 +41,11 @@ describe('University Controller', () => {
     });
 
     it('/GET all universities ', async () => {
-        const getEntities: UniversityDTO[] = (await request(app.getHttpServer()).get('/api/universities').expect(200))
-            .body;
+        const getEntities: UniversityDTO[] = (
+            await request(app.getHttpServer())
+                .get('/api/universities')
+                .expect(200)
+        ).body;
 
         expect(getEntities).toEqual(entityMock);
     });
@@ -59,7 +62,10 @@ describe('University Controller', () => {
 
     it('/POST create universities', async () => {
         const createdEntity: UniversityDTO = (
-            await request(app.getHttpServer()).post('/api/universities').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/universities')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
@@ -67,7 +73,10 @@ describe('University Controller', () => {
 
     it('/PUT update universities', async () => {
         const updatedEntity: UniversityDTO = (
-            await request(app.getHttpServer()).put('/api/universities').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .put('/api/universities')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);

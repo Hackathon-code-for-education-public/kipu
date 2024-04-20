@@ -27,17 +27,6 @@ import TranslationService from '@/locale/translation.service';
 import UserOAuth2Service from '@/entities/user/user.oauth2.service';
 /* tslint:disable */
 
-import ProfileService from '@/entities/profile/profile.service';
-import UniversityService from '@/entities/university/university.service';
-import AlbumService from '@/entities/album/album.service';
-import UserToUniversityService from '@/entities/user-to-university/user-to-university.service';
-import CommentService from '@/entities/comment/comment.service';
-import ImageService from '@/entities/image/image.service';
-import FilesService from '@/entities/files/files.service';
-import DirectionService from '@/entities/direction/direction.service';
-import EntrySubjectService from '@/entities/entry-subject/entry-subject.service';
-import AdmissionService from '@/entities/admission/admission.service';
-import ProductService from '@/entities/product/product.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 /* tslint:enable */
@@ -96,17 +85,6 @@ new Vue({
 
     userOAuth2Service: () => new UserOAuth2Service(),
     translationService: () => translationService,
-    profileService: () => new ProfileService(),
-    universityService: () => new UniversityService(),
-    albumService: () => new AlbumService(),
-    userToUniversityService: () => new UserToUniversityService(),
-    commentService: () => new CommentService(),
-    imageService: () => new ImageService(),
-    filesService: () => new FilesService(),
-    directionService: () => new DirectionService(),
-    entrySubjectService: () => new EntrySubjectService(),
-    admissionService: () => new AdmissionService(),
-    productService: () => new ProductService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
   },

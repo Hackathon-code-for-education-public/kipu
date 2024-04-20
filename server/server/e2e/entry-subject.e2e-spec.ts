@@ -42,7 +42,9 @@ describe('EntrySubject Controller', () => {
 
     it('/GET all entry-subjects ', async () => {
         const getEntities: EntrySubjectDTO[] = (
-            await request(app.getHttpServer()).get('/api/entry-subjects').expect(200)
+            await request(app.getHttpServer())
+                .get('/api/entry-subjects')
+                .expect(200)
         ).body;
 
         expect(getEntities).toEqual(entityMock);
@@ -60,7 +62,10 @@ describe('EntrySubject Controller', () => {
 
     it('/POST create entry-subjects', async () => {
         const createdEntity: EntrySubjectDTO = (
-            await request(app.getHttpServer()).post('/api/entry-subjects').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/entry-subjects')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
@@ -68,7 +73,10 @@ describe('EntrySubject Controller', () => {
 
     it('/PUT update entry-subjects', async () => {
         const updatedEntity: EntrySubjectDTO = (
-            await request(app.getHttpServer()).put('/api/entry-subjects').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .put('/api/entry-subjects')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);

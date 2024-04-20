@@ -64,7 +64,10 @@ describe('Account', () => {
 
     it('/POST register new user', async () => {
         const createdUser: UserDTO = (
-            await request(app.getHttpServer()).post('/api/register').send(testUserDTO).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/register')
+                .send(testUserDTO)
+                .expect(201)
         ).body;
 
         expect(createdUser.login).toEqual(testUserDTO.login);
@@ -72,17 +75,29 @@ describe('Account', () => {
     });
 
     it('/GET activate account', async () => {
-        await request(app.getHttpServer()).get('/api/activate').expect(500);
+        await request(app.getHttpServer())
+            .get('/api/activate')
+            .expect(500);
     });
 
     it('/GET authenticate', async () => {
-        const loginValue: any = (await request(app.getHttpServer()).get('/api/authenticate').expect(200)).text;
+        const loginValue: any = (
+            await request(app.getHttpServer())
+                .get('/api/authenticate')
+                .expect(200)
+        ).text;
 
         expect(loginValue).toEqual(testUserAuthenticated.login);
     });
 
     it('/GET account', async () => {
-        const loggedUser: any = JSON.parse((await request(app.getHttpServer()).get('/api/account').expect(200)).text);
+        const loggedUser: any = JSON.parse(
+            (
+                await request(app.getHttpServer())
+                    .get('/api/account')
+                    .expect(200)
+            ).text,
+        );
 
         expect(loggedUser.id).toEqual(userAuthenticated.id);
         expect(loggedUser.login).toEqual(userAuthenticated.login);
@@ -95,7 +110,10 @@ describe('Account', () => {
             lastName: 'updateLastName',
             ...testUserAuthenticated,
         };
-        await request(app.getHttpServer()).post('/api/account').send(savedTestUser).expect(201);
+        await request(app.getHttpServer())
+            .post('/api/account')
+            .send(savedTestUser)
+            .expect(201);
 
         const updatedUserSettings: UserDTO = await service.findByFields({
             where: { login: testUserAuthenticated.login },
@@ -105,7 +123,10 @@ describe('Account', () => {
     });
 
     it('/POST change password', async () => {
-        await request(app.getHttpServer()).post('/api/account/change-password').send(testPasswordChange).expect(201);
+        await request(app.getHttpServer())
+            .post('/api/account/change-password')
+            .send(testPasswordChange)
+            .expect(201);
 
         const successFullyLoggedInWithNewPassword = await authService
             .login({
@@ -121,11 +142,15 @@ describe('Account', () => {
     });
 
     it('/POST reset password init', async () => {
-        await request(app.getHttpServer()).post('/api/account/reset-password/init').expect(500);
+        await request(app.getHttpServer())
+            .post('/api/account/reset-password/init')
+            .expect(500);
     });
 
     it('/POST reset password finish', async () => {
-        await request(app.getHttpServer()).post('/api/account/reset-password/finish').expect(500);
+        await request(app.getHttpServer())
+            .post('/api/account/reset-password/finish')
+            .expect(500);
     });
 
     afterEach(async () => {

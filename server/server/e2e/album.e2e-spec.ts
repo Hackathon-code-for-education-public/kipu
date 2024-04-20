@@ -41,7 +41,11 @@ describe('Album Controller', () => {
     });
 
     it('/GET all albums ', async () => {
-        const getEntities: AlbumDTO[] = (await request(app.getHttpServer()).get('/api/albums').expect(200)).body;
+        const getEntities: AlbumDTO[] = (
+            await request(app.getHttpServer())
+                .get('/api/albums')
+                .expect(200)
+        ).body;
 
         expect(getEntities).toEqual(entityMock);
     });
@@ -58,7 +62,10 @@ describe('Album Controller', () => {
 
     it('/POST create albums', async () => {
         const createdEntity: AlbumDTO = (
-            await request(app.getHttpServer()).post('/api/albums').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/albums')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
@@ -66,7 +73,10 @@ describe('Album Controller', () => {
 
     it('/PUT update albums', async () => {
         const updatedEntity: AlbumDTO = (
-            await request(app.getHttpServer()).put('/api/albums').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .put('/api/albums')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);

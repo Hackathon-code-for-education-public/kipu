@@ -17,13 +17,16 @@ export class Comment extends BaseEntity {
     @Column({ type: 'integer', name: 'rate', nullable: true })
     rate: number;
 
-    @OneToMany((type) => Image, (other) => other.comment)
+    @OneToMany(
+        type => Image,
+        other => other.comment,
+    )
     images: Image[];
 
-    @ManyToOne((type) => Profile)
+    @ManyToOne(type => Profile)
     user: Profile;
 
-    @ManyToOne((type) => University)
+    @ManyToOne(type => University)
     university: University;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

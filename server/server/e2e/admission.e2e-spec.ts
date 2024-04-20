@@ -41,8 +41,11 @@ describe('Admission Controller', () => {
     });
 
     it('/GET all admissions ', async () => {
-        const getEntities: AdmissionDTO[] = (await request(app.getHttpServer()).get('/api/admissions').expect(200))
-            .body;
+        const getEntities: AdmissionDTO[] = (
+            await request(app.getHttpServer())
+                .get('/api/admissions')
+                .expect(200)
+        ).body;
 
         expect(getEntities).toEqual(entityMock);
     });
@@ -59,7 +62,10 @@ describe('Admission Controller', () => {
 
     it('/POST create admissions', async () => {
         const createdEntity: AdmissionDTO = (
-            await request(app.getHttpServer()).post('/api/admissions').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .post('/api/admissions')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(createdEntity).toEqual(entityMock);
@@ -67,7 +73,10 @@ describe('Admission Controller', () => {
 
     it('/PUT update admissions', async () => {
         const updatedEntity: AdmissionDTO = (
-            await request(app.getHttpServer()).put('/api/admissions').send(entityMock).expect(201)
+            await request(app.getHttpServer())
+                .put('/api/admissions')
+                .send(entityMock)
+                .expect(201)
         ).body;
 
         expect(updatedEntity).toEqual(entityMock);

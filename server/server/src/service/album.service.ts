@@ -30,7 +30,7 @@ export class AlbumService {
         const resultList = await this.albumRepository.findAndCount(options);
         const albumDTO: AlbumDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach((album) => albumDTO.push(AlbumMapper.fromEntityToDTO(album)));
+            resultList[0].forEach(album => albumDTO.push(AlbumMapper.fromEntityToDTO(album)));
             resultList[0] = albumDTO;
         }
         return resultList;

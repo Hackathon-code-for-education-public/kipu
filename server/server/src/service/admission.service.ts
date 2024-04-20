@@ -30,7 +30,7 @@ export class AdmissionService {
         const resultList = await this.admissionRepository.findAndCount(options);
         const admissionDTO: AdmissionDTO[] = [];
         if (resultList && resultList[0]) {
-            resultList[0].forEach((admission) => admissionDTO.push(AdmissionMapper.fromEntityToDTO(admission)));
+            resultList[0].forEach(admission => admissionDTO.push(AdmissionMapper.fromEntityToDTO(admission)));
             resultList[0] = admissionDTO;
         }
         return resultList;

@@ -9,9 +9,9 @@ export class ProfileMapper {
         if (!entityDTO) {
             return;
         }
-        let entity = new Profile();
+        const entity = new Profile();
         const fields = Object.getOwnPropertyNames(entityDTO);
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entity[field] = entityDTO[field];
         });
         return entity;
@@ -21,11 +21,11 @@ export class ProfileMapper {
         if (!entity) {
             return;
         }
-        let entityDTO = new ProfileDTO();
+        const entityDTO = new ProfileDTO();
 
         const fields = Object.getOwnPropertyNames(entity);
 
-        fields.forEach((field) => {
+        fields.forEach(field => {
             entityDTO[field] = entity[field];
         });
 
