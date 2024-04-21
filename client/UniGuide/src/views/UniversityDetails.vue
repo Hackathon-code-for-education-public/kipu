@@ -7,7 +7,8 @@
   <div v-if="university" class="container px-4 text-right">
     <div class="row gx-5">
       <div class="col">
-        <div style="display: flex; gap: 20px">
+      <img v-if="isMobile" class="university__img" style="border-radius: 25px; margin-bottom: 30px;" src = "https://cdn-crimea-news.com/img/20190902/94ba314f52d8940e7317afb2f298e2fc.jpg" />
+      <div style="display: flex; gap: 20px">
           <button class="btn" style="background-color: #7956FF; color:aliceblue"><b>Хочу поступить сюда</b><i class="fa-duotone fa-address-book"></i> </button>
           <button class="btn" style="background-color: #7956FF; color:aliceblue"><b>Навигация по ВУЗу</b><i class="fa-duotone fa-address-book"></i> </button>
         </div>
@@ -38,7 +39,7 @@
       </div>
       <div class="col">
         <div class="p-3">
-          <img style="border-radius: 25px" src = "https://cdn-crimea-news.com/img/20190902/94ba314f52d8940e7317afb2f298e2fc.jpg"></div>
+          <img v-if="isDesktop" class="university__img" style="border-radius: 25px" src = "https://cdn-crimea-news.com/img/20190902/94ba314f52d8940e7317afb2f298e2fc.jpg"></div>
       </div>
     </div>
   </div>
@@ -54,7 +55,9 @@ export default {
   components: {TheHeader},
   data () {
     return {
-      university: null
+      university: null,
+      isMobile: window.innerWidth < 1280,
+      isDesktop: window.innerWidth >= 1280,
     }
   },
   async mounted () {
@@ -88,6 +91,12 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+.university__img {
+  width: 320px;
 
+  @media (min-width: 1280px) {
+    width: 100%;
+  }
+}
 </style>
