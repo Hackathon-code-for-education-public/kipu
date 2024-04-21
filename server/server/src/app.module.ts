@@ -16,7 +16,7 @@ import { ProfileModule } from './module/profile.module';
 import { UniversityModule } from './module/university.module';
 import { UserToUniversityModule } from './module/user-to-university.module';
 import { UserModule } from './module/user.module';
-import { SocketModule } from './module/socket.module';
+import { EventsModule } from './module/events.module';
 import { join } from 'path';
 // jhipster-needle-add-entity-module-to-main-import - JHipster will import entity modules here, do not remove
 // jhipster-needle-add-controller-module-to-main-import - JHipster will import controller modules here, do not remove
@@ -26,8 +26,8 @@ import { join } from 'path';
     imports: [
         TypeOrmModule.forRootAsync({ useFactory: ormConfig }),
         ServeStaticModule.forRoot({
-            rootPath: join(__dirname, '..', '../resources/uploads'),
-            serveRoot: '/resources/uploads/'
+          rootPath: join(__dirname, '..', '../resources/uploads'),
+          serveRoot: '/resources/uploads/'
         }),
         AuthModule,
         AdmissionModule,
@@ -42,7 +42,7 @@ import { join } from 'path';
         UniversityModule,
         UserToUniversityModule,
         UserModule,
-        SocketModule
+        EventsModule
         // jhipster-needle-add-entity-module-to-main - JHipster will add entity modules here, do not remove
     ],
     controllers: [

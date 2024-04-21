@@ -5,6 +5,7 @@ import { BaseEntity } from './base/base.entity';
 import { University } from './university.entity';
 import { Profile } from './profile.entity';
 import { FileType } from './enumeration/file-type';
+import {PanoramaPoints} from "./panorama-points.entity";
 
 /**
  * A Files.
@@ -25,6 +26,9 @@ export class Files extends BaseEntity {
 
     @ManyToOne(type => Profile)
     profile: Profile;
+
+    @OneToMany(() => PanoramaPoints, (point) => point.file)
+    points: PanoramaPoints[]
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 }

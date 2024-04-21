@@ -7,6 +7,7 @@
   <div v-if="university" class="container px-4 text-right">
     <div class="row gx-5">
       <div class="col">
+        <Panorama :university="university" v-if="university.files.length" />
       <img v-if="isMobile" class="university__img" style="border-radius: 25px; margin-bottom: 30px;" :src="`http://localhost:8080/resources/uploads/${university.images[0].imageURL}`" />
       <div style="display: flex; gap: 20px">
           <button class="btn" style="background-color: #7956FF; color:aliceblue"><b>Хочу поступить сюда</b><i class="fa-duotone fa-address-book"></i> </button>
@@ -39,7 +40,8 @@
       </div>
       <div class="col">
         <div class="p-3">
-          <img v-if="isDesktop" class="university__img" style="border-radius: 25px" :src="`http://localhost:8080/resources/uploads/${university.images[0].imageURL}`"></div>
+<!--           <Panorama :university="university" v-if="university.files.length" />-->
+          <img v-if="isDesktop && university.files.length === 0" class="university__img" style="border-radius: 25px" :src="`http://localhost:8080/resources/uploads/${university.images[0].imageURL}`"></div>
       </div>
     </div>
   </div>
@@ -47,12 +49,13 @@
 
 <script>
 import TheHeader from "@/components/TheHeader.vue";
+import Panorama from "@/components/Panorama.vue";
 import axios from '@/utils/axios'
 import {useRoute} from "vue-router";
 
 export default {
   name: "UniversityDetails",
-  components: {TheHeader},
+  components: {TheHeader, Panorama},
   data () {
     return {
       university: null,

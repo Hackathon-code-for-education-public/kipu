@@ -5,6 +5,7 @@ import { BaseDTO } from './base.dto';
 import { UniversityDTO } from './university.dto';
 import { ProfileDTO } from './profile.dto';
 import { FileType } from '../../domain/enumeration/file-type';
+import {PointsDTO} from "./points.dto";
 
 /**
  * A FilesDTO object.
@@ -24,6 +25,9 @@ export class FilesDTO extends BaseDTO {
 
     @ApiModelProperty({ type: ProfileDTO, description: 'profile relationship' })
     profile: ProfileDTO;
+
+    @ApiModelProperty({ type: ProfileDTO, description: 'profile relationship' })
+    points: PointsDTO[];
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
 }

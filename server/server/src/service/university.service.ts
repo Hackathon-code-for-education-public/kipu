@@ -5,7 +5,7 @@ import { UniversityDTO } from '../service/dto/university.dto';
 import { UniversityMapper } from '../service/mapper/university.mapper';
 import { UniversityRepository } from '../repository/university.repository';
 
-const relationshipNames = ['images'];
+const relationshipNames = ['images', 'files', 'files.points'];
 
 @Injectable()
 export class UniversityService {
@@ -26,6 +26,17 @@ export class UniversityService {
 
     async findAndCount(options: FindManyOptions<UniversityDTO>): Promise<[UniversityDTO[], number]> {
         options.relations = relationshipNames;
+        const resultList = await this.universityRepository.findAndCount(options);
+        const universityDTO: UniversityDTO[] = [];
+        if (resultList && resultList[0]) {
+            resultList[0].forEach(university => universityDTO.push(UniversityMapper.fromEntityToDTO(university)));
+            resultList[0] = universityDTO;
+        }
+        return resultList;
+    }
+
+    async findAndCountWithPoints(options): Promise<[UniversityDTO[], number]> {
+        options.relations = ['files', 'files.points']
         const resultList = await this.universityRepository.findAndCount(options);
         const universityDTO: UniversityDTO[] = [];
         if (resultList && resultList[0]) {

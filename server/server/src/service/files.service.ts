@@ -8,6 +8,7 @@ import { FilesRepository } from '../repository/files.repository';
 const relationshipNames = [];
 relationshipNames.push('university');
 relationshipNames.push('profile');
+relationshipNames.push('points');
 
 @Injectable()
 export class FilesService {

@@ -1,5 +1,5 @@
 <template>
-  <TheHeader style="margin-bottom: 40px;" />
+<!--  <TheHeader style="margin-bottom: 40px;" />-->
   <View360
     showControlBar
     projectionType="cubemap"
@@ -29,7 +29,7 @@
 </template>
 <script>
 import { View360, EquirectProjection } from '@egjs/vue3-view360'
-import data from "@/utils/data";
+// import data from "@/utils/data";
 import TheHeader from "@/components/TheHeader.vue";
 
 export default {
@@ -39,19 +39,25 @@ export default {
       projection: null
     }
   },
+  props: {
+    university: {
+      type: Array,
+      required: true
+    }
+  },
   methods: {
     async handleHotspotClick (h) {
       this.currentProjectionIndex = h.foreignProjectionIndex + 1
       this.projection = new EquirectProjection({
         src: [
-          `/pano${this.currentProjectionIndex}.jpg`
+          `http://localhost:8080/resources/uploads/pano${this.currentProjectionIndex}.jpg`
         ]
       })
     }
   },
   computed: {
     hotspots () {
-      return data[this.currentProjectionIndex - 1]
+      return this.university.files[this.currentProjectionIndex - 1].points
     }
   },
   created () {
@@ -70,8 +76,8 @@ export default {
 
 <style lang="scss">
 .projection__canvas {
-  width: 1280px;
-  height: 720px;
+  width: 1200px;
+  height: 500px;
 
   border-radius: 25px;
 }
