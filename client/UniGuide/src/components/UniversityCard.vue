@@ -1,0 +1,64 @@
+<template>
+  <div class="card" style="max-width: 480px">
+    <img class="card__img"  src="/kipu.png" />
+    <div class="card__title">
+      КИПУ
+    </div>
+    <p v-for="o in 4" :key="o" class="card__desc">{{ 'Стоимость обучения ' + o + ' Р'}}</p>
+    <button class="button" type="text">Узнать подробнее <el-icon><ArrowRightBold /></el-icon></button>
+  </div>
+</template>
+
+<script>
+
+import {ArrowRightBold} from "@element-plus/icons-vue";
+
+export default {
+  name: "UniversityCard",
+  components: {ArrowRightBold}
+}
+</script>
+
+<style lang="scss">
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-color: #EADEFA;
+  border-radius: 20px;
+  border: 1px solid #0998FF;
+  padding: 20px;
+
+  margin-bottom: 20px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 28px;
+
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  &__img {
+    border-radius: 25px;
+  }
+}
+
+.button {
+  margin-top: 10px;
+  justify-content: flex-start;
+  color: black;
+  text-align: start;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  padding-left: 0;
+  align-items: center;
+  display: flex;
+}
+</style>
