@@ -72,9 +72,9 @@
       v-if="isRegModalView"
       v-model="isRegModalView"
       title="Регистрация"
-      width="400"
+      width="500"
       align-center
-      style="border-radius: 20px; height: 390px; padding: 30px"
+      style="border-radius: 20px; height: 530px; padding: 30px"
     >
       <div style="display: flex; flex-direction: column; align-items: center">
         <el-input size="large" v-model="email" style="width: 240px; margin-bottom: 15px; margin-top: 20px;" placeholder="Эл. почта" />
@@ -88,7 +88,10 @@
         </el-button>
       </div>
 
-      <div style="height: 100%" class="notregistered">
+      <el-checkbox v-model="isCheck" style="text-align: center; font-size: 15px; margin-top: 20px;" label="Даю согласие на обработку персональных данных" size="large" />
+      <a href="/policy.pdf" target="_blank" style="text-align: center; font-size: 15px; margin-bottom: 20px;">Политика в отношении обработки персональных данных</a>
+
+      <div style="height: 100%; margin-top: 30px;" class="notregistered">
         <p>Уже зарегистрированы? <span style="cursor: pointer" @click="handleLoginClick">Войти</span></p>
       </div>
     </el-dialog>
@@ -98,6 +101,7 @@
 <script>
 import axios from '@/utils/axios'
 import { useCookies } from "vue3-cookies";
+import { ElNotification } from 'element-plus'
 
 export default {
   name: "TheHeader",
@@ -110,7 +114,8 @@ export default {
       name: '',
       email: '',
       password: '',
-      isLogin: false
+      isLogin: false,
+      isCheck: false
     }
   },
   setup () {
@@ -150,8 +155,17 @@ export default {
         password: this.password,
         activated: true
       }
-      await axios.post('/register', regData)
-      this.handleLoginClick()
+
+      if (!this.isCheck) {
+        ElNotification({
+          title: 'Ошибка',
+          message: 'Необходимо дать согласие на обработку персональных данных',
+          type: 'warning',
+        })
+      } else {
+        await axios.post('/register', regData)
+        this.handleLoginClick()
+      }
     }
   }
 }

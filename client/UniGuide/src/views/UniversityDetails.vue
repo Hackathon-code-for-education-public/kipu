@@ -7,6 +7,7 @@
   <div v-if="university" class="container px-4 text-right">
     <div class="row gx-5">
       <div class="col">
+        <Panorama :university="university" v-if="university.files.length" />
       <img v-if="isMobile" class="university__img" style="border-radius: 25px; margin-bottom: 30px;" :src="`http://localhost:8080/resources/uploads/${university.images[0].imageURL}`" />
       <div style="display: flex; gap: 20px">
           <button class="btn" style="background-color: #7956FF; color:aliceblue"><b>Хочу поступить сюда</b><i class="fa-duotone fa-address-book"></i> </button>
@@ -39,7 +40,7 @@
       </div>
       <div class="col">
         <div class="p-3">
-           <Panorama v-if="university.files.length" />
+<!--           <Panorama :university="university" v-if="university.files.length" />-->
           <img v-if="isDesktop && university.files.length === 0" class="university__img" style="border-radius: 25px" :src="`http://localhost:8080/resources/uploads/${university.images[0].imageURL}`"></div>
       </div>
     </div>
