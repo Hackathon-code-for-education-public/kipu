@@ -1,10 +1,14 @@
 <template>
-
+  <TheHeader />
+  <h1>Profile</h1>
 </template>
 
-<script lang="ts">
+<script>
+import TheHeader from "@/components/TheHeader.vue";
+
 export default {
-  name: "Profile"
+  name: "Profile",
+  components: {TheHeader}
 }
 </script>
 

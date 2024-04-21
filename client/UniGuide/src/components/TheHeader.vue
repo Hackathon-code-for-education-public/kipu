@@ -115,6 +115,14 @@ export default {
     const { cookies } = useCookies();
     return { cookies }
   },
+  computed: {
+    isLogin () {
+      const { cookies } = useCookies()
+      const token = cookies.get('token')
+
+      return !!token
+    }
+  },
   methods: {
     handleLoginClick() {
       this.isLoginModalView = true

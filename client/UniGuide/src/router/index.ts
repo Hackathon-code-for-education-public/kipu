@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import PanoramaView from "@/views/PanoramaView.vue";
 import UniversityDetails from "@/views/UniversityDetails.vue";
+import Profile from "@/views/Profile.vue";
 
 import { useCookies } from "vue3-cookies";
 
@@ -25,9 +26,20 @@ const router = createRouter({
       component: UniversityDetails
     },
     {
-      path: 'profile/:id',
+      path: '/profile/:id',
       name: 'profile',
-      component: Profile
+      component: Profile,
+      beforeEnter: (to, from, next) => {
+        const { cookies } = useCookies()
+        const token = cookies.get('token')
+        if (!token) {
+          next('/')
+          return false
+        }
+
+        next()
+        return true
+      }
     }
   ]
 })
