@@ -20,6 +20,17 @@ import RegisterService from './account/register/register.service';
 import UserManagementService from '@/admin/user-management/user-management.service';
 import LoginService from './account/login.service';
 import AccountService from './account/account.service';
+import AdmissionService from '@/entities/admission/admission.service';
+import UserToUniversityService from '@/entities/user-to-university/user-to-university.service';
+import UniversityService from '@/entities/university/university.service';
+import ProfileService from '@/entities/profile/profile.service';
+import ProductService from '@/entities/product/product.service';
+import ImageService from '@/entities/image/image.service';
+import FilesService from '@/entities/files/files.service';
+import EntrySubjectService from '@/entities/entry-subject/entry-subject.service';
+import DirectionService from '@/entities/direction/direction.service';
+import CommentService from '@/entities/comment/comment.service';
+import AlbumService from '@/entities/album/album.service';
 
 import '../content/scss/vendor.scss';
 import TranslationService from '@/locale/translation.service';
@@ -84,6 +95,17 @@ new Vue({
     metricsService: () => new MetricsService(),
 
     userOAuth2Service: () => new UserOAuth2Service(),
+    admissionService: () => new AdmissionService(),
+    albumService: () => new AlbumService(),
+    commentService: () => new CommentService(),
+    directionService: () => new DirectionService(),
+    entrySubjectService: () => new EntrySubjectService(),
+    filesService: () => new FilesService(),
+    imageService: () => new ImageService(),
+    productService: () => new ProductService(),
+    profileService: () => new ProfileService(),
+    universityService: () => new UniversityService(),
+    userToUniversityService: () => new UserToUniversityService(),
     translationService: () => translationService,
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,

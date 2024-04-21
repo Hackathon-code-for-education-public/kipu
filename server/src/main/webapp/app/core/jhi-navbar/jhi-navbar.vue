@@ -29,13 +29,53 @@
             <font-awesome-icon icon="th-list" />
             <span class="no-bold" v-text="$t('global.menu.entities.main')">Entities</span>
           </span>
-          <b-dropdown-item to="/entities/admission" active-class="active">
+          <b-dropdown-item to="/admission" active-class="active">
             <font-awesome-icon icon="users" />
             <span>Admission</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/entities/university" active-class="active">
+          <b-dropdown-item to="/album" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>Album</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/comment" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>Comment</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/direction" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>Direction</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/entry-subject" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>Entry Subject</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/files" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>Files</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/image" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>Image</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/product" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>Product</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/profile" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>Profile</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/university" active-class="active">
             <font-awesome-icon icon="users" />
             <span>University</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/user" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>User</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/user-to-university" active-class="active">
+            <font-awesome-icon icon="users" />
+            <span>User To Universiry</span>
           </b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown

@@ -11,6 +11,7 @@ import AdmissionService from './admission.service';
 })
 export default class Admission extends Vue {
   @Inject('admissionService') private admissionService: () => AdmissionService;
+
   private removeId: number = null;
 
   public admissions: IAdmission[] = [];
