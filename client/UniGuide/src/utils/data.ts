@@ -25,12 +25,6 @@ export default
     ],
     [
         {
-            type: "search",
-            yaw: 120,
-            pitch: -23,
-            book: 4
-        },
-        {
             type: "link",
             yaw: -100,
             pitch: -12,

@@ -196,6 +196,24 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
     foreignProjectionIndex: 3
   }
 
+  point1ForFile2: PanoramaPoints = {
+    file: undefined,
+    type: "link",
+    yaw: -100,
+    pitch: -12,
+    text: "Главный вход",
+    foreignProjectionIndex: 0
+  }
+
+  point1ForFile3: PanoramaPoints = {
+    file: undefined,
+    type: "link",
+    yaw: 0,
+    pitch: -10,
+    text: "Центральные ворота",
+    foreignProjectionIndex: 0
+  }
+
   direction1: Direction = {
     disciplines: [],
     name: "09.03.01 Информатика и вычислительная техника",
@@ -259,7 +277,6 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
 
         await Promise.all([this.user1, this.user2, this.user3, this.user4].map(u => transformPassword(u)));
 
-
       const subjectRepository = getRepository('entry_subject')
       await subjectRepository.save([this.subject1, this.subject2, this.subject3])
 
@@ -287,6 +304,7 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
 
       const pointsRepository = getRepository('panorama_points')
       await pointsRepository.save([this.point1ForFile1, this.point2ForFile1, this.point3ForFile1]);
+      await pointsRepository.save([this.point1ForFile2, this.point1ForFile3, this.point1ForFile3])
 
       const fileRepository = getRepository('files')
 
@@ -295,6 +313,8 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
       this.panoForUniversity3.university = this.university1
       this.panoForUniversity4.university = this.university1
       this.panoForUniversity1.points = [this.point1ForFile1, this.point2ForFile1, this.point3ForFile1,]
+      this.panoForUniversity2.points = [this.point1ForFile2, this.point1ForFile3]
+      this.panoForUniversity3.points = [this.point1ForFile3]
       await fileRepository.save(this.panoForUniversity1)
       await fileRepository.save(this.panoForUniversity2)
       await fileRepository.save(this.panoForUniversity3)
