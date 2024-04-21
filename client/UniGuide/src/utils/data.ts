@@ -14,6 +14,13 @@ export default
             pitch: -10,
             text: "Спорт. площадка",
             foreignProjectionIndex: 1
+        },
+        {
+            type: "link",
+            yaw: -210,
+            pitch: -10,
+            text: "Главный вход",
+            foreignProjectionIndex: 3
         }
     ],
     [
@@ -36,7 +43,7 @@ export default
             type: "link",
             yaw: 20,
             pitch: -10,
-            text: "Центральный вход",
+            text: "Центральные ворота",
             foreignProjectionIndex: 0
         }
     ]

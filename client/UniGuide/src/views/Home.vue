@@ -6,7 +6,7 @@
 
     <div>
       <h2 class="hero__title">Поступать легче - с нами.</h2>
-      <p class="hero__desc">Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit.</p>
+      <p class="hero__desc">Поступай смело, строй свое будущее с уверенностью! Поступай смело, строй свое будущее с уверенностью!</p>
       <el-button style="gap: 10px" color="#626aef" size="large">
         Узнать подробнее
         <el-icon>
