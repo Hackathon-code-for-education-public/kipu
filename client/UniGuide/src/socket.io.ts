@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client'
 
 export const useSocketIO = () => {
-  const socket = io('http://localhost:8080')
+  const socket = io('ws://localhost:8080/api')
   return {
     socket,
   }
