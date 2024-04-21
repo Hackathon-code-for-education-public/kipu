@@ -26,7 +26,8 @@ import { join } from 'path';
     imports: [
         TypeOrmModule.forRootAsync({ useFactory: ormConfig }),
         ServeStaticModule.forRoot({
-            rootPath: join(__dirname, '..', 'resources/uploads'),
+            rootPath: join(__dirname, '..', '../resources/uploads'),
+            serveRoot: '/resources/uploads/'
         }),
         AuthModule,
         AdmissionModule,
