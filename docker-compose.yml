@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  client-app:
+    build: client/
+    container_name: client-app
+    ports:
+      - 4173:4173
+
+  server-app:
+    build: server/
+    container_name: server-app
+    ports:
+      - 8080:8081
+
+  server-db:
+    image: postgres:13.2
+    # volumes:
+    #     - ~/volumes/jhipster/hackatonapp/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=sa
+      - POSTGRES_PASSWORD=yourStrong(!)Password
+      - POSTGRES_DB=hackatonapp
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5433:5432
