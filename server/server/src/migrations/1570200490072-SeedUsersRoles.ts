@@ -63,8 +63,8 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
 
   university1: University = {
     albums: [], comments: [], directions: [], files: [], images: [], products: [],
-    name: 'Крымский инженерно-педагогический университет имени Февзи Якубова',
-    desciption: '',
+    name: 'КИПУ имени Февзи Якубова',
+    desciption: 'Крымский инженерно-педагогический университет имени Февзи Якубова',
     address: '295015, Республика Крым, г. Симферополь, пер. Учебный, д.8',
     phoneNumber: '+7 (3652) 24-94-95',
     email: 'cepu@crimeaedu.ru',
@@ -72,7 +72,35 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
     phoneNumbers: '+7 (36561) 6-60-99,+7 (989) 271-43-99',
     emails: 'cepu-ipk@crimeaedu.ru,cepu-kerch@crimeaedu.ru',
     schedule: 'Понедельник – пятница: 8:00 – 17:00 (перерыв на обед: 12:00 – 13:00). Режим рабочего времени работников, отнесенных к профессорско-преподавательскому составу, определяется расписанием занятий',
-    responsiblePerson: 'Ибрагимов Таир Шукриевич\t'
+    responsiblePerson: 'Ибрагимов Таир Шукриевич'
+  };
+
+  university2: University = {
+    albums: [], comments: [], directions: [], files: [], images: [], products: [],
+    name: 'Университет Иннополис',
+    desciption: 'Автономная некоммерческая организация высшего образования "Университет Иннополис"',
+    address: '420500, Российская Федерация, Республика Татарстан, Верхнеуслонский муниципальный район, город Иннополис, улица Университетская, д. 1',
+    phoneNumber: '+7 (843) 203-92-53',
+    email: 'university@innopolis.ru',
+    site: 'https://innopolis.university',
+    phoneNumbers: '+7 843 203-92-53 (275),+7 843 203-92-53 (275)',
+    emails: 'university@innopolis.ru',
+    schedule: 'пн-пт 9:00-18:00 (время московское)',
+    responsiblePerson: 'Семенихин Кирилл Владимирович'
+  };
+
+  university3: University = {
+    albums: [], comments: [], directions: [], files: [], images: [], products: [],
+    name: 'МГИМО-Одинцово',
+    desciption: 'Одинцовский филиал Федерального государственного автономного образовательного учреждения высшего образования "Московский государственный институт международных отношений (университет) Министерства иностранных дел Российской Федерации"',
+    address: '143007, Московская область, г. Одинцово, ул. Новоспортивная, д.3',
+    phoneNumber: '+7 (495) 661-71-22',
+    email: 'info@odin.mgimo.ru',
+    site: 'https://odin.mgimo.ru',
+    phoneNumbers: '+7 (495) 661-71-22,+7 (495) 661-71-22',
+    emails: 'info@odin.mgimo.ru,info@odin.mgimo.ru',
+    schedule: 'Пн-Сб 8:30-21:30',
+    responsiblePerson: 'Мальгин Артем Владимирович'
   };
 
     // eslint-disable-next-line
@@ -93,7 +121,7 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
         await Promise.all([this.user1, this.user2, this.user3, this.user4].map(u => transformPassword(u)));
 
         await userRepository.save([this.user1, this.user2, this.user3, this.user4]);
-        await universityRepository.save([this.university1])
+        await universityRepository.save([this.university1, this.university2, this.university3])
     }
 
     // eslint-disable-next-line

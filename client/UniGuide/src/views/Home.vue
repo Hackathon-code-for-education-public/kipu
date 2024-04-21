@@ -35,7 +35,7 @@
     <img class="registration__img" src="/meditation.png" />
   </div>
 
-  <h2 style="margin-bottom: 20px;">Список вузов</h2>
+  <h2 style="margin-bottom: 20px; margin-left: 100px;">Список вузов</h2>
   <div class="list">
     <UniversityCard v-for="u in universities" :key="u.id" :uId="u.id" />
 
@@ -47,20 +47,20 @@
     </div>
   </div>
 
-  <h2 style="margin-top: 50px; margin-bottom: 20px;">Направления подготовки</h2>
-  <div style="padding-bottom: 100px" class="list">
-    <UniversityCard />
-    <UniversityCard />
-    <UniversityCard />
-    <UniversityCard />
+<!--&lt;!&ndash;  <h2 style="margin-top: 50px; margin-bottom: 20px;">Направления подготовки</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div style="padding-bottom: 100px" class="list">&ndash;&gt;-->
+<!--&lt;!&ndash;    <UniversityCard />&ndash;&gt;-->
+<!--&lt;!&ndash;    <UniversityCard />&ndash;&gt;-->
+<!--&lt;!&ndash;    <UniversityCard />&ndash;&gt;-->
+<!--&lt;!&ndash;    <UniversityCard />&ndash;&gt;-->
 
-    <div v-if="isMobile" class="button--primary" color="#626aef" size="large">
-      Полный список всех специальностей с возможностью сортировки
-      <el-icon>
-        <ArrowRightBold />
-      </el-icon>
-    </div>
-  </div>
+<!--&lt;!&ndash;    <div v-if="isMobile" class="button&#45;&#45;primary" color="#626aef" size="large">&ndash;&gt;-->
+<!--&lt;!&ndash;      Полный список всех специальностей с возможностью сортировки&ndash;&gt;-->
+<!--&lt;!&ndash;      <el-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;        <ArrowRightBold />&ndash;&gt;-->
+<!--&lt;!&ndash;      </el-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--  </div>-->
 </template>
 
 <script>
@@ -93,9 +93,9 @@ h2 {
 }
 
 .list {
-
   @media (min-width: 1280px) {
     display: flex;
+    justify-content: center;
     gap: 20px;
   }
 }
@@ -159,7 +159,7 @@ h2 {
   &__img {
     margin-top: 44px;
   }
-  
+
   @media (min-width: 1280px) {
     flex-direction: row-reverse;
     align-items: center;

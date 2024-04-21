@@ -3,7 +3,7 @@
 
   <div class="profile">
     <div class="profile__wrap">
-      <el-avatar class="profile__avatar" :size="120" src="/avatar.jpeg" />
+      <el-avatar class="profile__avatar" :size="120" src="/mock_avatar.svg" />
 
       <h2 class="profile__title">{{ user.login }}</h2>
 

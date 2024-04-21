@@ -1,10 +1,11 @@
 <template>
-  <div class="card" style="max-width: 480px">
+  <div class="card" style="max-width: 300px; max-height: 600px;">
     <img class="card__img"  src="/kipu.png" />
-    <div class="card__title">
-      КИПУ
+    <div v-if="university" class="card__title">
+      {{ university.name }}
     </div>
-    <p v-for="o in 4" :key="o" class="card__desc">{{ 'Стоимость обучения ' + o + ' Р'}}</p>
+    <p class="card__desc">{{  }}</p>
+<!--    <p v-for="o in 4" :key="o" class="card__desc">{{ 'Стоимость обучения ' + o + ' Р'}}</p>-->
     <button v-if="uId" class="button" type="text"><router-link :to="`/university/${uId}`">Узнать подробнее <el-icon><ArrowRightBold /></el-icon></router-link></button>
   </div>
 </template>
@@ -12,19 +13,28 @@
 <script>
 
 import {ArrowRightBold} from "@element-plus/icons-vue";
+import {useRoute} from "vue-router";
+import axios from "@/utils/axios";
 
 export default {
   name: "UniversityCard",
   components: {ArrowRightBold},
-  mounted() {
-    console.log(this.uId)
+  data () {
+    return {
+      university: null
+    }
   },
   props: {
     uId: {
       type: Number,
       required: false
     }
-  }
+  },
+  async mounted () {
+    const route = useRoute()
+    const { data } = await axios.get(`/universities/${this.uId}`)
+    this.university = data
+  },
 }
 </script>
 
