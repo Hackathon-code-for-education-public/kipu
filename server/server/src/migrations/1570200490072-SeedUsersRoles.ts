@@ -7,6 +7,8 @@ import {Image} from "../domain/image.entity";
 import {Files} from "../domain/files.entity";
 import {FileType} from "../domain/enumeration/file-type";
 import {PanoramaPoints} from "../domain/panorama-points.entity";
+import {Direction} from "../domain/direction.entity";
+import {EntrySubject} from "../domain/entry-subject.entity";
 
 export class SeedUsersRoles1570200490072 implements MigrationInterface {
     role1: Authority = { name: 'ROLE_ADMIN' };
@@ -194,6 +196,51 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
     foreignProjectionIndex: 3
   }
 
+  direction1: Direction = {
+    disciplines: [],
+    name: "09.03.01 Информатика и вычислительная техника",
+    university: null
+  }
+
+  direction2: Direction = {
+    disciplines: [],
+    name: "09.03.03 Прикладная информатика",
+    university: null
+  }
+
+  direction3: Direction = {
+    disciplines: [],
+    name: "15.03.06 Мехатроника и робототехника",
+    university: null
+  }
+
+  direction4: Direction = {
+    disciplines: [],
+    name: "38.04.05 Бизнес-информатика",
+    university: null
+  }
+
+  subject1: EntrySubject = {
+    direction: null,
+    examDate: null,
+    minimumScore: 30,
+    name: "Математика"
+  }
+
+  subject2: EntrySubject = {
+    direction: null,
+    examDate: null,
+    minimumScore: 40,
+    name: "Русский язык"
+  }
+
+  subject3: EntrySubject = {
+    direction: null,
+    examDate: null,
+    minimumScore: 60,
+    name: "Физика"
+  }
+
     // eslint-disable-next-line
     public async up(queryRunner: QueryRunner): Promise<any> {
         const authorityRepository = getRepository('nhi_authority');
@@ -211,6 +258,23 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
         const imagesRepository = getRepository('image')
 
         await Promise.all([this.user1, this.user2, this.user3, this.user4].map(u => transformPassword(u)));
+
+
+      const subjectRepository = getRepository('entry_subject')
+      await subjectRepository.save([this.subject1, this.subject2, this.subject3])
+
+      const directionRepository = getRepository('direction')
+      this.direction1.disciplines = [this.subject1, this.subject2]
+      this.direction2.disciplines = [this.subject1, this.subject3]
+      this.direction3.disciplines = [this.subject1, this.subject3, this.subject2]
+      this.direction4.disciplines = [this.subject3, this.subject1]
+      await directionRepository.save(this.direction1)
+      await directionRepository.save(this.direction2)
+      await directionRepository.save(this.direction3)
+      await directionRepository.save(this.direction4)
+      this.university1.directions = [this.direction1, this.direction2]
+      this.university2.directions = [this.direction1, this.direction3, this.direction4]
+      this.university3.directions = [this.direction1, this.direction4, this.direction2]
 
         await userRepository.save([this.user1, this.user2, this.user3, this.user4]);
         await universityRepository.save([this.university1, this.university2, this.university3]);
@@ -235,6 +299,7 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
       await fileRepository.save(this.panoForUniversity2)
       await fileRepository.save(this.panoForUniversity3)
       await fileRepository.save(this.panoForUniversity4)
+
 
     }
 

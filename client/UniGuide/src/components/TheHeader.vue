@@ -52,7 +52,7 @@
       style="border-radius: 20px; height: 370px; padding: 20px"
     >
       <div style="display: flex; flex-direction: column; align-items: center">
-        <el-input size="large" v-model="email" style="width: 240px; margin-bottom: 15px; margin-top: 20px;" placeholder="Имя" />
+        <el-input size="large" v-model="name" style="width: 240px; margin-bottom: 15px; margin-top: 20px;" placeholder="Логин" />
         <el-input size="large" type="password" v-model="password" style="width: 240px; margin-bottom: 40px;" placeholder="Пароль" />
       </div>
 
@@ -78,7 +78,7 @@
     >
       <div style="display: flex; flex-direction: column; align-items: center">
         <el-input size="large" v-model="email" style="width: 240px; margin-bottom: 15px; margin-top: 20px;" placeholder="Эл. почта" />
-        <el-input size="large" v-model="name" style="width: 240px; margin-bottom: 15px" placeholder="Имя" />
+        <el-input size="large" v-model="name" style="width: 240px; margin-bottom: 15px" placeholder="Логин" />
         <el-input size="large" type="password" v-model="password" style="width: 240px; margin-bottom: 15px;" placeholder="Пароль" />
       </div>
 
@@ -139,7 +139,7 @@ export default {
     },
     async handleLogin() {
       const loginData = {
-        username: this.email,
+        username: this.name,
         rememberMe: true,
         password: this.password
       }

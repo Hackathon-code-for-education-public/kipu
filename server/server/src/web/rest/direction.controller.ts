@@ -22,9 +22,9 @@ import { Request } from '../../client/request';
 import { LoggingInterceptor } from '../../client/interceptors/logging.interceptor';
 
 @Controller('api/directions')
-@UseGuards(AuthGuard, RolesGuard)
+// @UseGuards(AuthGuard, RolesGuard)
 @UseInterceptors(LoggingInterceptor, ClassSerializerInterceptor)
-@ApiBearerAuth()
+// @ApiBearerAuth()
 @ApiUseTags('directions')
 export class DirectionController {
     logger = new Logger('DirectionController');

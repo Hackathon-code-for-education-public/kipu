@@ -47,20 +47,17 @@
     </div>
   </div>
 
-<!--&lt;!&ndash;  <h2 style="margin-top: 50px; margin-bottom: 20px;">Направления подготовки</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;  <div style="padding-bottom: 100px" class="list">&ndash;&gt;-->
-<!--&lt;!&ndash;    <UniversityCard />&ndash;&gt;-->
-<!--&lt;!&ndash;    <UniversityCard />&ndash;&gt;-->
-<!--&lt;!&ndash;    <UniversityCard />&ndash;&gt;-->
-<!--&lt;!&ndash;    <UniversityCard />&ndash;&gt;-->
+  <h2 style="margin-top: 50px; margin-bottom: 20px;">Направления подготовки</h2>
+  <div style="padding-bottom: 100px" class="list">
+    <DirectionCard v-for="d in directions" :key="d.name" :direction="d" />
 
-<!--&lt;!&ndash;    <div v-if="isMobile" class="button&#45;&#45;primary" color="#626aef" size="large">&ndash;&gt;-->
-<!--&lt;!&ndash;      Полный список всех специальностей с возможностью сортировки&ndash;&gt;-->
-<!--&lt;!&ndash;      <el-icon>&ndash;&gt;-->
-<!--&lt;!&ndash;        <ArrowRightBold />&ndash;&gt;-->
-<!--&lt;!&ndash;      </el-icon>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--  </div>-->
+    <div v-if="isMobile" class="button--primary" color="#626aef" size="large">
+      Полный список всех специальностей с возможностью сортировки
+      <el-icon>
+        <ArrowRightBold />
+      </el-icon>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -68,20 +65,24 @@ import TheHeader from "@/components/TheHeader.vue";
 import {ArrowRightBold} from "@element-plus/icons-vue";
 import UniversityCard from "@/components/UniversityCard.vue";
 import axios from '@/utils/axios'
+import DirectionCard from "@/components/DirectionCard.vue";
 
 export default {
   name: "Home",
-  components: {UniversityCard, ArrowRightBold, TheHeader},
+  components: {DirectionCard, UniversityCard, ArrowRightBold, TheHeader},
   data () {
     return {
       universities: [],
+      directions: [],
       isMobile: window.innerWidth < 1280,
       isDesktop: window.innerWidth >= 1280
     }
   },
   async mounted () {
-    const { data } = await axios.get('/universities')
-    this.universities = data
+    const data = await axios.get('/universities')
+    const data1 = await axios.get('/directions')
+    this.universities = data.data
+    this.directions = data1.data
   }
 }
 </script>

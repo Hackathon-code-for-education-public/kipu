@@ -5,7 +5,7 @@ import { UniversityDTO } from '../service/dto/university.dto';
 import { UniversityMapper } from '../service/mapper/university.mapper';
 import { UniversityRepository } from '../repository/university.repository';
 
-const relationshipNames = ['images', 'files', 'files.points'];
+const relationshipNames = ['images', 'files', 'files.points', 'directions', 'directions.disciplines'];
 
 @Injectable()
 export class UniversityService {

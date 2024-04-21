@@ -5,7 +5,7 @@ import { DirectionDTO } from '../service/dto/direction.dto';
 import { DirectionMapper } from '../service/mapper/direction.mapper';
 import { DirectionRepository } from '../repository/direction.repository';
 
-const relationshipNames = [];
+const relationshipNames = ['disciplines'];
 relationshipNames.push('university');
 
 @Injectable()
