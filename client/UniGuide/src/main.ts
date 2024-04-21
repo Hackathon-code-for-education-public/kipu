@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import 'virtual:windi.css'
+// import 'virtual:windi.css'
+import './assets/main.css'
 // @ts-ignore
 import App from './App.vue'
 import router from './router'

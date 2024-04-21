@@ -1,6 +1,6 @@
 <template>
-  <div class="card" style="max-width: 300px; max-height: 600px;">
-    <img class="card__img"  src="/kipu.png" />
+  <div v-if="university" class="card" style="max-width: 300px; max-height: 600px;">
+    <img class="card__img"  :src="`http://localhost:8080/resources/uploads/${university.images[0].imageURL}`" />
     <div v-if="university" class="card__title">
       {{ university.name }}
     </div>
@@ -34,6 +34,7 @@ export default {
     const route = useRoute()
     const { data } = await axios.get(`/universities/${this.uId}`)
     this.university = data
+    console.log(`http://localhost:8080/resources/uploads/${this.university.images[0].imageURL}`)
   },
 }
 </script>

@@ -37,7 +37,7 @@ const router = createRouter({
       component: ChatView
     },
     {
-      path: '/profile/:id',
+      path: '/profile',
       name: 'profile',
       component: Profile,
       beforeEnter: (to, from, next) => {

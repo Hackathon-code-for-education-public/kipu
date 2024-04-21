@@ -7,7 +7,7 @@
   <div v-if="university" class="container px-4 text-right">
     <div class="row gx-5">
       <div class="col">
-      <img v-if="isMobile" class="university__img" style="border-radius: 25px; margin-bottom: 30px;" src = "https://cdn-crimea-news.com/img/20190902/94ba314f52d8940e7317afb2f298e2fc.jpg" />
+      <img v-if="isMobile" class="university__img" style="border-radius: 25px; margin-bottom: 30px;" :src="`http://localhost:8080/resources/uploads/${university.images[0].imageURL}`" />
       <div style="display: flex; gap: 20px">
           <button class="btn" style="background-color: #7956FF; color:aliceblue"><b>Хочу поступить сюда</b><i class="fa-duotone fa-address-book"></i> </button>
           <button class="btn" style="background-color: #7956FF; color:aliceblue"><b>Навигация по ВУЗу</b><i class="fa-duotone fa-address-book"></i> </button>
@@ -39,7 +39,7 @@
       </div>
       <div class="col">
         <div class="p-3">
-          <img v-if="isDesktop" class="university__img" style="border-radius: 25px" src = "https://cdn-crimea-news.com/img/20190902/94ba314f52d8940e7317afb2f298e2fc.jpg"></div>
+          <img v-if="isDesktop" class="university__img" style="border-radius: 25px" :src="`http://localhost:8080/resources/uploads/${university.images[0].imageURL}`"></div>
       </div>
     </div>
   </div>
