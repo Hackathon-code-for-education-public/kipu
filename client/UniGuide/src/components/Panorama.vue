@@ -1,5 +1,5 @@
 <template>
-  <TheHeader style="margin-bottom: 20px;" />
+  <TheHeader style="margin-bottom: 40px;" />
   <View360
     showControlBar
     projectionType="cubemap"
@@ -72,6 +72,8 @@ export default {
 .projection__canvas {
   width: 1280px;
   height: 720px;
+
+  border-radius: 25px;
 }
 
 </style>

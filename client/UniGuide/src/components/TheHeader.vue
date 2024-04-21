@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header__logo">
       <router-link to="/">
-        <img class="header__logo-img" src="/logo.png" />
+        <img class="header__logo-img" src="/logo.svg" />
       </router-link>
     </div>
 
@@ -39,7 +39,6 @@
         </el-sub-menu>
         <el-menu-item @click="handleLoginClick" index="4">Вход</el-menu-item>
         <el-menu-item @click="handleLoginClick" index="5"><router-link to="/panorama">Панорама</router-link></el-menu-item>
-        <el-menu-item index="6">Orders</el-menu-item>
       </el-menu>
     </div>
 
