@@ -1,9 +1,12 @@
-import {MigrationInterface, QueryRunner, getRepository, Column} from 'typeorm';
-import { User } from '../domain/user.entity';
-import { transformPassword } from '../security';
-import { Authority } from '../domain/authority.entity';
+import {getRepository, MigrationInterface, QueryRunner} from 'typeorm';
+import {User} from '../domain/user.entity';
+import {transformPassword} from '../security';
+import {Authority} from '../domain/authority.entity';
 import {University} from "../domain/university.entity";
 import {Image} from "../domain/image.entity";
+import {Files} from "../domain/files.entity";
+import {FileType} from "../domain/enumeration/file-type";
+import {PanoramaPoints} from "../domain/panorama-points.entity";
 
 export class SeedUsersRoles1570200490072 implements MigrationInterface {
     role1: Authority = { name: 'ROLE_ADMIN' };
@@ -128,6 +131,69 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
     university: null
   };
 
+  panoForUniversity1: Files = {
+    description: null,
+    profile: undefined,
+    type: FileType.EO,
+    university: null,
+    url: "pano1.jpg",
+    points: null
+  };
+
+  panoForUniversity2: Files = {
+    description: null,
+    profile: undefined,
+    type: FileType.EO,
+    university: null,
+    url: "pano2.jpg",
+    points: null
+  };
+
+  panoForUniversity3: Files = {
+    description: null,
+    profile: undefined,
+    type: FileType.EO,
+    university: null,
+    url: "pano3.jpg",
+    points: null
+  };
+
+  panoForUniversity4: Files = {
+    description: null,
+    profile: undefined,
+    type: FileType.EO,
+    university: null,
+    url: "pano4.jpg",
+    points: null
+  };
+
+  point1ForFile1: PanoramaPoints = {
+    file: undefined,
+    type: "link",
+    yaw: -120,
+    pitch: -10,
+    text: "Парковка",
+    foreignProjectionIndex: 2
+  }
+
+  point2ForFile1: PanoramaPoints = {
+    file: undefined,
+    type: "link",
+    yaw: -55,
+    pitch: -10,
+    text: "Спорт. площадка",
+    foreignProjectionIndex: 1
+  }
+
+  point3ForFile1: PanoramaPoints = {
+    file: undefined,
+    type: "link",
+    yaw: -210,
+    pitch: -10,
+    text: "Главный вход",
+    foreignProjectionIndex: 3
+  }
+
     // eslint-disable-next-line
     public async up(queryRunner: QueryRunner): Promise<any> {
         const authorityRepository = getRepository('nhi_authority');
@@ -153,6 +219,23 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
         this.fileForUniversity2.university = this.university2;
         this.fileForUniversity3.university = this.university3;
         await imagesRepository.save([this.fileForUniversity1, this.fileForUniversity2, this.fileForUniversity3]);
+
+
+      const pointsRepository = getRepository('panorama_points')
+      await pointsRepository.save([this.point1ForFile1, this.point2ForFile1, this.point3ForFile1]);
+
+      const fileRepository = getRepository('files')
+
+      this.panoForUniversity1.university = this.university1
+      this.panoForUniversity2.university = this.university1
+      this.panoForUniversity3.university = this.university1
+      this.panoForUniversity4.university = this.university1
+      this.panoForUniversity1.points = [this.point1ForFile1, this.point2ForFile1, this.point3ForFile1,]
+      await fileRepository.save(this.panoForUniversity1)
+      await fileRepository.save(this.panoForUniversity2)
+      await fileRepository.save(this.panoForUniversity3)
+      await fileRepository.save(this.panoForUniversity4)
+
     }
 
     // eslint-disable-next-line

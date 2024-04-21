@@ -39,7 +39,8 @@
       </div>
       <div class="col">
         <div class="p-3">
-          <img v-if="isDesktop" class="university__img" style="border-radius: 25px" :src="`http://localhost:8080/resources/uploads/${university.images[0].imageURL}`"></div>
+           <Panorama v-if="university.files.length" />
+          <img v-if="isDesktop && university.files.length === 0" class="university__img" style="border-radius: 25px" :src="`http://localhost:8080/resources/uploads/${university.images[0].imageURL}`"></div>
       </div>
     </div>
   </div>
@@ -47,12 +48,13 @@
 
 <script>
 import TheHeader from "@/components/TheHeader.vue";
+import Panorama from "@/components/Panorama.vue";
 import axios from '@/utils/axios'
 import {useRoute} from "vue-router";
 
 export default {
   name: "UniversityDetails",
-  components: {TheHeader},
+  components: {TheHeader, Panorama},
   data () {
     return {
       university: null,
