@@ -24,6 +24,7 @@ import { join } from 'path';
 
 @Module({
     imports: [
+        EventsModule,
         TypeOrmModule.forRootAsync({ useFactory: ormConfig }),
         ServeStaticModule.forRoot({
           rootPath: join(__dirname, '..', '../resources/uploads'),
@@ -41,8 +42,7 @@ import { join } from 'path';
         ProfileModule,
         UniversityModule,
         UserToUniversityModule,
-        UserModule,
-        EventsModule
+        UserModule
         // jhipster-needle-add-entity-module-to-main - JHipster will add entity modules here, do not remove
     ],
     controllers: [

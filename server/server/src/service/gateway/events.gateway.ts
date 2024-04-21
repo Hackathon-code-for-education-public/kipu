@@ -1,45 +1,64 @@
-import { Logger } from "@nestjs/common";
+import { Logger } from '@nestjs/common';
 import {
   OnGatewayConnection,
-  OnGatewayDisconnect,
-  OnGatewayInit,
   SubscribeMessage,
   WebSocketGateway,
   WebSocketServer,
-} from "@nestjs/websockets";
+} from '@nestjs/websockets';
+import { Server, Socket } from 'socket.io';
 
-import { Server } from "socket.io";
+const rooms = [
+  {
+      id: 1,
+      name: 'Genel',
+      description: 'Genel Sohbet Odası',
+      users: [],
+      status: 'open',
+      hasPassword: false,
+  },
+  {
+      id: 2,
+      name: 'Vue.js',
+      description: 'Vue.Js Sohbet Odası',
+      users: [],
+      status: 'open',
+      hasPassword: true,
+      password: '123'
+
+  },
+  {
+      id: 3,
+      name: 'React.js',
+      description: 'React.Js Sohbet Odası',
+      users: [],
+      status: 'open',
+      hasPassword: false,
+
+  },
+  {
+      id: 4,
+      name: 'Node.js',
+      description: 'Node.Js Sohbet Odası',
+      users: [],
+      status: 'closed',
+      hasPassword: false,
+  }
+];
 
 @WebSocketGateway()
-export class EventsGateway
-  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
-{
+export class EventsGateway implements OnGatewayConnection {
   private readonly logger = new Logger(EventsGateway.name);
+  @WebSocketServer()
+  server: Server;
 
-  @WebSocketServer() io: Server;
-
-  afterInit() {
-    this.logger.log("Initialized");
+  handleConnection(socket: Socket): void {
+    console.log('handleConnection gateway');
   }
 
-  handleConnection(client: any, ...args: any[]) {
-    const { sockets } = this.io.sockets;
-
-    this.logger.log(`Client id: ${client.id} connected`);
-    this.logger.debug(`Number of connected clients: ${sockets.size}`);
-  }
-
-  handleDisconnect(client: any) {
-    this.logger.log(`Cliend id:${client.id} disconnected`);
-  }
-
-  @SubscribeMessage("ping")
-  handleMessage(client: any, data: any) {
-    this.logger.log(`Message received from client id: ${client.id}`);
-    this.logger.debug(`Payload: ${data}`);
+  @SubscribeMessage('getRooms')
+  findAll(): any {
     return {
-      event: "pong",
-      data: "Wrong data that will make the test fail",
-    };
+      rooms
+    }
   }
 }

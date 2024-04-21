@@ -4,6 +4,7 @@ import { AppModule } from './app.module';
 import { setupSwagger } from './swagger';
 import { config } from './config';
 import { Logger, ValidationPipe, BadRequestException } from '@nestjs/common';
+
 import * as fs from 'fs';
 const logger: Logger = new Logger('Main');
 const port = process.env.NODE_SERVER_PORT || config.get('server.port');
@@ -11,6 +12,7 @@ const port = process.env.NODE_SERVER_PORT || config.get('server.port');
 async function bootstrap(): Promise<void> {
     const appOptions = { cors: { origin: '*' } };
     const app = await NestFactory.create(AppModule, appOptions);
+    
     app.useGlobalPipes(
         new ValidationPipe({
             exceptionFactory: (): BadRequestException => new BadRequestException('Validation error'),
