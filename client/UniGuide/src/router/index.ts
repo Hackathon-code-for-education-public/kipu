@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import PanoramaView from "@/views/PanoramaView.vue";
 import UniversityDetails from "@/views/UniversityDetails.vue";
 
+import { useCookies } from "vue3-cookies";
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -21,6 +23,11 @@ const router = createRouter({
       path: '/university/:slug',
       name: 'university',
       component: UniversityDetails
+    },
+    {
+      path: 'profile/:id',
+      name: 'profile',
+      component: Profile
     }
   ]
 })

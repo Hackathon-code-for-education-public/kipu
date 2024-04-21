@@ -21,7 +21,7 @@ export class UserDTO extends BaseDTO {
     @IsEmail()
     email: string;
 
-    @ApiModelProperty({ example: 'true', description: 'User activation', required: false })
+    @ApiModelProperty({ example: 'true', description: 'User activation', required: false, default: true })
     activated?: boolean;
 
     @ApiModelProperty({ example: 'en', description: 'User language', required: false })

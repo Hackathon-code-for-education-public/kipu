@@ -5,8 +5,8 @@
     <img class="hero__img" src="/hero.png" />
 
     <div>
-      <h2 class="hero__title">Поступать легче - с нами.</h2>
-      <p class="hero__desc">Поступай смело, строй свое будущее с уверенностью! Поступай смело, строй свое будущее с уверенностью!</p>
+      <h2 class="hero__title">Поступать легче - с нами!</h2>
+      <p class="hero__desc">Будь смелее, строй свое будущее с уверенностью! </p>
       <el-button style="gap: 10px" color="#626aef" size="large">
         Узнать подробнее
         <el-icon>
@@ -175,7 +175,7 @@ h2 {
 
     &__desc {
       font-size: 22px;
-      max-width: 500px;
+      max-width: 400px;
 
       margin-bottom: 30px;
     }

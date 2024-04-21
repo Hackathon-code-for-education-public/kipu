@@ -48,28 +48,56 @@
       title="Вход"
       width="400"
       align-center
-      style="border-radius: 20px; height: 370px"
+      style="border-radius: 20px; height: 370px; padding: 20px"
     >
       <div style="display: flex; flex-direction: column; align-items: center">
-        <el-input size="large" v-model="email" style="width: 240px; margin-bottom: 15px; margin-top: 20px;" placeholder="Эл. почта" />
+        <el-input size="large" v-model="email" style="width: 240px; margin-bottom: 15px; margin-top: 20px;" placeholder="Имя" />
         <el-input size="large" v-model="password" style="width: 240px; margin-bottom: 40px;" placeholder="Пароль" />
       </div>
 
       <div class="dialog-footer">
-        <el-button size="default" @click="isLoginModalView = false">Отменить</el-button>
-        <el-button size="default" type="primary" @click="isLoginModalView = false">
+<!--        <el-button size="default" @click="isLoginModalView = false">Отменить</el-button>-->
+        <el-button @click="handleLogin" size="default" type="primary">
           Войти
         </el-button>
       </div>
 
       <div class="notregistered">
-        <p>Ещё не зарегистрированы? <span @click="isLoginModalView">Зарегистрироваться</span></p>
+        <p>Ещё не зарегистрированы? <span style="cursor: pointer" @click="handleRegClick">Зарегистрироваться</span></p>
+      </div>
+    </el-dialog>
+
+    <el-dialog
+      v-if="isRegModalView"
+      v-model="isRegModalView"
+      title="Регистрация"
+      width="400"
+      align-center
+      style="border-radius: 20px; height: 390px; padding: 30px"
+    >
+      <div style="display: flex; flex-direction: column; align-items: center">
+        <el-input size="large" v-model="email" style="width: 240px; margin-bottom: 15px; margin-top: 20px;" placeholder="Эл. почта" />
+        <el-input size="large" v-model="name" style="width: 240px; margin-bottom: 15px" placeholder="Имя" />
+        <el-input size="large" v-model="password" style="width: 240px; margin-bottom: 15px;" placeholder="Пароль" />
+      </div>
+
+      <div class="dialog-footer">
+        <el-button @click="handleRegistration" size="default" type="primary">
+          Зарегистрироваться
+        </el-button>
+      </div>
+
+      <div style="height: 100%" class="notregistered">
+        <p>Уже зарегистрированы? <span style="cursor: pointer" @click="handleLoginClick">Войти</span></p>
       </div>
     </el-dialog>
   </div>
 </template>
 
 <script>
+import axios from '@/utils/axios'
+import { useCookies } from "vue3-cookies";
+
 export default {
   name: "TheHeader",
   data () {
@@ -78,16 +106,43 @@ export default {
       isDesktop: window.innerWidth >= 1280,
       isLoginModalView: false,
       isRegModalView: false,
+      name: '',
       email: '',
-      password: ''
+      password: '',
     }
+  },
+  setup () {
+    const { cookies } = useCookies();
+    return { cookies }
   },
   methods: {
     handleLoginClick() {
       this.isLoginModalView = true
+      this.isRegModalView = false
     },
     handleRegClick() {
+      this.isLoginModalView = false
       this.isRegModalView = true
+    },
+    async handleLogin() {
+      const loginData = {
+        username: this.email,
+        rememberMe: true,
+        password: this.password
+      }
+      const { data } = await axios.post('/authenticate', loginData)
+      this.cookies.set("token", `Bearer ${data.id_token}`);
+      this.isLoginModalView = false
+    },
+    async handleRegistration() {
+      const regData = {
+        login: this.name,
+        email: this.email,
+        password: this.password,
+        activated: true
+      }
+      await axios.post('/register', regData)
+      this.handleLoginClick()
     }
   }
 }
