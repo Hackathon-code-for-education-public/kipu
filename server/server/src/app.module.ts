@@ -17,6 +17,7 @@ import { UniversityModule } from './module/university.module';
 import { UserToUniversityModule } from './module/user-to-university.module';
 import { UserModule } from './module/user.module';
 import { SocketModule } from './module/socket.module';
+import { join } from 'path';
 // jhipster-needle-add-entity-module-to-main-import - JHipster will import entity modules here, do not remove
 // jhipster-needle-add-controller-module-to-main-import - JHipster will import controller modules here, do not remove
 // jhipster-needle-add-service-module-to-main-import - JHipster will import service modules here, do not remove
@@ -25,7 +26,7 @@ import { SocketModule } from './module/socket.module';
     imports: [
         TypeOrmModule.forRootAsync({ useFactory: ormConfig }),
         ServeStaticModule.forRoot({
-            rootPath: config.getClientPath(),
+            rootPath: join(__dirname, '..', 'resources/uploads'),
         }),
         AuthModule,
         AdmissionModule,

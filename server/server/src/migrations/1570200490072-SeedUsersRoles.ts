@@ -3,6 +3,7 @@ import { User } from '../domain/user.entity';
 import { transformPassword } from '../security';
 import { Authority } from '../domain/authority.entity';
 import {University} from "../domain/university.entity";
+import {Image} from "../domain/image.entity";
 
 export class SeedUsersRoles1570200490072 implements MigrationInterface {
     role1: Authority = { name: 'ROLE_ADMIN' };
@@ -103,6 +104,30 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
     responsiblePerson: 'Мальгин Артем Владимирович'
   };
 
+  fileForUniversity3: Image = {
+    comment: null,
+    date: null,
+    imageURL: "feaf4ba4-d780-4aa3-ba2b-1cb205c220bb.jpeg",
+    product: null,
+    university: null
+  };
+
+  fileForUniversity2: Image = {
+    comment: null,
+    date: null,
+    imageURL: "b37b5346-f290-4c65-9a1d-b0b4d4b7f71c.jpeg",
+    product: null,
+    university: null
+  };
+
+  fileForUniversity1: Image = {
+    comment: null,
+    date: null,
+    imageURL: "13aa6b56-5e1e-489a-b4dc-2439fe68336f.jpg",
+    product: null,
+    university: null
+  };
+
     // eslint-disable-next-line
     public async up(queryRunner: QueryRunner): Promise<any> {
         const authorityRepository = getRepository('nhi_authority');
@@ -116,12 +141,18 @@ export class SeedUsersRoles1570200490072 implements MigrationInterface {
         this.user3.authorities = [adminRole, userRole];
         this.user4.authorities = [userRole];
 
-        const universityRepository = getRepository('nhi_university')
+        const universityRepository = getRepository('university')
+        const imagesRepository = getRepository('image')
 
         await Promise.all([this.user1, this.user2, this.user3, this.user4].map(u => transformPassword(u)));
 
         await userRepository.save([this.user1, this.user2, this.user3, this.user4]);
-        await universityRepository.save([this.university1, this.university2, this.university3])
+        await universityRepository.save([this.university1, this.university2, this.university3]);
+
+        this.fileForUniversity1.university = this.university1;
+        this.fileForUniversity2.university = this.university2;
+        this.fileForUniversity3.university = this.university3;
+        await imagesRepository.save([this.fileForUniversity1, this.fileForUniversity2, this.fileForUniversity3]);
     }
 
     // eslint-disable-next-line
