@@ -3,6 +3,11 @@ apply plugin: 'com.android.application'
 android {
     namespace "com.idman.uniguide"
     compileSdk rootProject.ext.compileSdkVersion
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     defaultConfig {
         applicationId "com.idman.uniguide"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -26,7 +31,7 @@ android {
 
 repositories {
     flatDir{
-        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+        dirs '../capacitor-cordova-android-plugins/src/main/libs'
     }
 }
 
