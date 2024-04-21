@@ -57,69 +57,55 @@
   </div>
 </template>
 
-<script>
-import { mapStores } from 'pinia'
+<script setup>
+import { useSocketIO } from '@/socket.io';
+const { socket } = useSocketIO()
+import { useChatStore } from '@/stores/index'
+import { onMounted, ref, computed } from 'vue';
+const store = useChatStore()
 
-export default {
+const receivedMessages = ref([]);
+const room = computed(() => store.doubleCount)
+const message = ref('');
+const msgError = ref(false);
 
-  data() {
-      return {
-          receivedMessages: [],
-          room: this.$store.getters.getRoom,
-          message: '',
-          msgError: false,
-      }
-  },
+const emit = defineEmits(['description', 'changeComponent']);
 
-  mounted() {
-      this.$io.on('message', async (data) => {
-          this.receivedMessages.push(await data);
-      })
-
-      this.$io.on('notification', (data) => {
-          this.$emit('description', data);
-          this.getRoom()
-
-      });
-
-  },
-
-  methods: {
-      sendMessage() {
-          if (this.message != '') {
-              this.$io.emit('sendMessage', this.message)
-              this.message = ''
-              setTimeout(() => {
-                  var container = document.getElementById('chatBox');
-                  container.scrollTop = container.scrollHeight;
-              }, 100)
-
-
-          } else {
-              this.msgError = true;
-          }
-
-      },
-
-      logOut() {
-          this.useChatStore.logOut()
-          this.$io.emit('leaveRoom')
-          this.$emit('changeComponent', 'roomsVue')
-      },
-
-      getRoom() {
-          this.$io.emit('getRoom', this.room.id, (data) => {
-              this.room = data.room
-          })
-
-      }
-  },
-
-  computed: {
-    ...mapStores(useChatStore)
-  },
-
+const sendMessage = () => {
+  if (this.message != '') {
+    socket.emit('sendMessage', this.message)
+    this.message.value = ''
+    setTimeout(() => {
+      var container = document.getElementById('chatBox');
+      container.scrollTop = container.scrollHeight;
+    }, 100)
+  } else {
+    this.msgError.value = true;
+  }
 }
+
+const logOut = () => {
+  this.useChatStore.logOut()
+  socket.emit('leaveRoom')
+  emit('changeComponent', 'roomsVue')
+}
+
+const getRoom = () => {
+  socket.emit('getRoom', this.room.id, (data) => {
+    this.room = data.room
+  })
+}
+
+onMounted(() => {
+  socket.on('message', async (data) => {
+    this.receivedMessages.push(await data);
+  })
+
+  socket.on('notification', (data) => {
+    emit('description', data);
+    getRoom()
+  });
+})
 </script>
 
 

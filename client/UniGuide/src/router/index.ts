@@ -1,11 +1,13 @@
 // @ts-ignore
 import { createRouter, createWebHistory } from 'vue-router'
 // @ts-ignore
-import Home from '../views/Home.vue'
+import Home from '@/views/Home.vue'
 // @ts-ignore
 import PanoramaView from "@/views/PanoramaView.vue";
 // @ts-ignore
 import UniversityDetails from "@/views/UniversityDetails.vue";
+// @ts-ignore
+import ChatView from "@/views/ChatView.vue";
 // @ts-ignore
 import Profile from "@/views/Profile.vue";
 
@@ -30,7 +32,12 @@ const router = createRouter({
       component: UniversityDetails
     },
     {
-      path: '/profile',
+      path: '/chat',
+      name: 'chat',
+      component: ChatView
+    },
+    {
+      path: '/profile/:id',
       name: 'profile',
       component: Profile,
       beforeEnter: (to, from, next) => {
@@ -40,7 +47,6 @@ const router = createRouter({
           next('/')
           return false
         }
-
         next()
         return true
       }

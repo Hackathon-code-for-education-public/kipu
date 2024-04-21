@@ -74,8 +74,8 @@
                       <td class="px-6 py-4 text-center text-sm font-medium">
                           <button
                               @click="joinRoom(room)"
-                              :disabled="room.status != 'open'"
-                              :class="room.status != 'open' ? 'text-gray-600 hover:text-gray-600 cursor-not-allowed' : 'text-indigo-600 hover:text-indigo-900 '"
+                              :disabled="room.status !== 'open'"
+                              :class="room.status !== 'open' ? 'text-gray-600 hover:text-gray-600 cursor-not-allowed' : 'text-indigo-600 hover:text-indigo-900 '"
                           >Join Room</button>
                       </td>
                   </tr>
@@ -85,42 +85,41 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { useSocketIO } from '@/socket.io';
+import { useChatStore } from '@/stores/index'
+import { onMounted, ref } from 'vue';
+const { socket } = useSocketIO()
 
-import { mapStores } from 'pinia'
+const store = useChatStore()
 
-export default {
+const rooms = ref([]);
+const emit = defineEmits(['changeComponent']);
 
-  data() {
-      return {
-          rooms: []
-      }
-  },
-  mounted() {
-      this.getRooms();
-  },
-
-  methods: {
-      joinRoom(room) {
-          this.useChatStore.joinRoom(room)
-          this.$emit('changeComponent', 'loginVue')
-      },
-
-      async getRooms() {
-          await this.$io.emit('getRooms', (res) => {
-              this.rooms = res.data;
-          });
-
-          await this.$io.on('rooms', (res) => {
-              this.rooms = res;
-          });
-      }
-  },
-
-  computed: {
-    ...mapStores(useChatStore)
-  },
+const joinRoom = (room) => {
+  store.joinRoom(room)
+  emit('changeComponent', 'loginVue')
 }
 
+const getRooms = async () => {
+  socket.emit('events', (res) => {
+    console.log(res);
+  })
 
+  console.log('getRooms client');
+  await socket.emit('getRooms', (res) => {
+    console.log('res', res);
+    this.rooms.value = res.data;
+  });
+
+  await socket.on('rooms', (res) => {
+    this.rooms.value = res;
+  });
+
+  console.log(rooms.value);
+}
+
+onMounted(() => {
+  getRooms()
+})
 </script>
