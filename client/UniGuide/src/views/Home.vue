@@ -4,14 +4,16 @@
   <div class="hero">
     <img class="hero__img" src="/hero.png" />
 
-    <h2 class="hero__title">Поступать легче - с нами.</h2>
-    <p class="hero__desc">Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit.</p>
-    <el-button style="gap: 10px" color="#626aef" size="large">
-      Узнать подробнее
-      <el-icon>
-        <ArrowRightBold />
-      </el-icon>
-    </el-button>
+    <div>
+      <h2 class="hero__title">Поступать легче - с нами.</h2>
+      <p class="hero__desc">Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit.</p>
+      <el-button style="gap: 10px" color="#626aef" size="large">
+        Узнать подробнее
+        <el-icon>
+          <ArrowRightBold />
+        </el-icon>
+      </el-button>
+    </div>
   </div>
 
   <div class="registration">
@@ -40,7 +42,7 @@
     <UniversityCard />
     <UniversityCard />
 
-    <div class="button--primary" color="#626aef" size="large">
+    <div v-if="isMobile" class="button--primary" color="#626aef" size="large">
       Полный список всех вузов с возможностью сортировки
       <el-icon>
         <ArrowRightBold />
@@ -55,7 +57,7 @@
     <UniversityCard />
     <UniversityCard />
 
-    <div class="button--primary" color="#626aef" size="large">
+    <div v-if="isMobile" class="button--primary" color="#626aef" size="large">
       Полный список всех специальностей с возможностью сортировки
       <el-icon>
         <ArrowRightBold />
@@ -74,7 +76,8 @@ export default {
   components: {UniversityCard, ArrowRightBold, TheHeader},
   data () {
     return {
-      name: 'Idman team'
+      isMobile: window.innerWidth < 1280,
+      isDesktop: window.innerWidth >= 1280
     }
   }
 }
@@ -84,6 +87,14 @@ export default {
 h2 {
   font-weight: 700;
   font-size: 20px;
+}
+
+.list {
+
+  @media (min-width: 1280px) {
+    display: flex;
+    gap: 20px;
+  }
 }
 
 .registration {
@@ -116,6 +127,17 @@ h2 {
   &__desc {
     font-weight: 600;
   }
+
+  @media (min-width: 1280px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+
+    margin-left: auto;
+
+    margin-right: auto;
+  }
 }
 
 .hero {
@@ -133,6 +155,34 @@ h2 {
 
   &__img {
     margin-top: 44px;
+  }
+  
+  @media (min-width: 1280px) {
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-around;
+
+    gap: 15px;
+
+    width: 100%;
+
+    &__title {
+      font-size: 32px;
+      max-width: 600px;
+
+      margin-bottom: 20px;
+    }
+
+    &__desc {
+      font-size: 22px;
+      max-width: 500px;
+
+      margin-bottom: 30px;
+    }
+
+    &__img {
+      width: 40%;
+    }
   }
 }
 

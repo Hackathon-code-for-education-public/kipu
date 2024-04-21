@@ -1,4 +1,5 @@
 <template>
+  <TheHeader style="margin-bottom: 20px;" />
   <View360
     showControlBar
     projectionType="cubemap"
@@ -29,6 +30,7 @@
 <script>
 import { View360, EquirectProjection } from '@egjs/vue3-view360'
 import data from "@/utils/data";
+import TheHeader from "@/components/TheHeader.vue";
 
 export default {
   data () {
@@ -60,6 +62,7 @@ export default {
     })
   },
   components: {
+    TheHeader,
     View360
   }
 }
@@ -67,8 +70,8 @@ export default {
 
 <style lang="scss">
 .projection__canvas {
-  width: 600px;
-  height: 300px;
+  width: 1280px;
+  height: 720px;
 }
 
 </style>
