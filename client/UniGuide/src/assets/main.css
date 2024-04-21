@@ -2,7 +2,11 @@
 @import 'bootstrap.css';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+html {
+  height: 100%;
+}
 body {
+  height: 100vh;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -25,7 +29,7 @@ body {
 
   @media (min-width: 1280px) {
     padding-top: 30px !important;
-    margin: auto;
+    margin: 0 auto;
   }
 }
 
@@ -46,7 +50,8 @@ a,
 @media (min-width: 1024px) {
   body {
     display: flex;
-    place-items: center;
+    height: 100%;
+    /*place-items: center;*/
   }
 
   #app {
