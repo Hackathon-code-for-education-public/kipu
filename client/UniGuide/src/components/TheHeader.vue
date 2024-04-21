@@ -37,7 +37,8 @@
           <el-menu-item index="3-2">item two</el-menu-item>
           <el-menu-item index="3-3">item three</el-menu-item>
         </el-sub-menu>
-        <el-menu-item @click="handleLoginClick" index="4">Вход</el-menu-item>
+        <el-menu-item v-if="!isLogin" @click="handleLoginClick" index="4">Вход</el-menu-item>
+        <el-menu-item v-else index="4"><router-link to="/profile">Профиль</router-link></el-menu-item>
         <el-menu-item @click="handleLoginClick" index="5"><router-link to="/panorama">Панорама</router-link></el-menu-item>
       </el-menu>
     </div>
@@ -109,19 +110,18 @@ export default {
       name: '',
       email: '',
       password: '',
+      isLogin: false
     }
   },
   setup () {
     const { cookies } = useCookies();
     return { cookies }
   },
-  computed: {
-    isLogin () {
-      const { cookies } = useCookies()
-      const token = cookies.get('token')
+  mounted () {
+    const { cookies } = useCookies()
+    const token = cookies.get('token')
 
-      return !!token
-    }
+    this.isLogin = !!token
   },
   methods: {
     handleLoginClick() {
@@ -140,6 +140,7 @@ export default {
       }
       const { data } = await axios.post('/authenticate', loginData)
       this.cookies.set("token", `Bearer ${data.id_token}`);
+      this.isLogin = true
       this.isLoginModalView = false
     },
     async handleRegistration() {

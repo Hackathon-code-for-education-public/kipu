@@ -26,7 +26,7 @@ const router = createRouter({
       component: UniversityDetails
     },
     {
-      path: '/profile/:id',
+      path: '/profile',
       name: 'profile',
       component: Profile,
       beforeEnter: (to, from, next) => {
