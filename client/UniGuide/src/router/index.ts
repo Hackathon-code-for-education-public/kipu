@@ -25,7 +25,7 @@ const router = createRouter({
       component: PanoramaView
     },
     {
-      path: '/university/:slug',
+      path: '/university/:id',
       name: 'university',
       component: UniversityDetails
     },

@@ -37,10 +37,7 @@
 
   <h2 style="margin-bottom: 20px;">Список вузов</h2>
   <div class="list">
-    <UniversityCard />
-    <UniversityCard />
-    <UniversityCard />
-    <UniversityCard />
+    <UniversityCard v-for="u in universities" :key="u.id" :uId="u.id" />
 
     <div v-if="isMobile" class="button--primary" color="#626aef" size="large">
       Полный список всех вузов с возможностью сортировки
@@ -50,7 +47,7 @@
     </div>
   </div>
 
-  <h2 style="margin-top: 50px; margin-bottom: 20px;">Список Специальностей</h2>
+  <h2 style="margin-top: 50px; margin-bottom: 20px;">Направления подготовки</h2>
   <div style="padding-bottom: 100px" class="list">
     <UniversityCard />
     <UniversityCard />
@@ -70,15 +67,21 @@
 import TheHeader from "@/components/TheHeader.vue";
 import {ArrowRightBold} from "@element-plus/icons-vue";
 import UniversityCard from "@/components/UniversityCard.vue";
+import axios from '@/utils/axios'
 
 export default {
   name: "Home",
   components: {UniversityCard, ArrowRightBold, TheHeader},
   data () {
     return {
+      universities: [],
       isMobile: window.innerWidth < 1280,
       isDesktop: window.innerWidth >= 1280
     }
+  },
+  async mounted () {
+    const { data } = await axios.get('/universities')
+    this.universities = data
   }
 }
 </script>

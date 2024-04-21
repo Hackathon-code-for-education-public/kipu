@@ -5,7 +5,7 @@
       КИПУ
     </div>
     <p v-for="o in 4" :key="o" class="card__desc">{{ 'Стоимость обучения ' + o + ' Р'}}</p>
-    <button class="button" type="text">Узнать подробнее <el-icon><ArrowRightBold /></el-icon></button>
+    <button v-if="uId" class="button" type="text"><router-link :to="`/university/${uId}`">Узнать подробнее <el-icon><ArrowRightBold /></el-icon></router-link></button>
   </div>
 </template>
 
@@ -15,7 +15,16 @@ import {ArrowRightBold} from "@element-plus/icons-vue";
 
 export default {
   name: "UniversityCard",
-  components: {ArrowRightBold}
+  components: {ArrowRightBold},
+  mounted() {
+    console.log(this.uId)
+  },
+  props: {
+    uId: {
+      type: Number,
+      required: false
+    }
+  }
 }
 </script>
 
