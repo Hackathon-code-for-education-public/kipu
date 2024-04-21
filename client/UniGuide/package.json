@@ -13,6 +13,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
     "@egjs/vue3-view360": "^4.0.0-beta.7",
     "@element-plus/icons-vue": "^2.3.1",
     "axios": "^1.6.8",
@@ -23,6 +25,7 @@
     "vue3-cookies": "^1.0.6"
   },
   "devDependencies": {
+    "@capacitor/cli": "^6.0.0",
     "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.12.5",

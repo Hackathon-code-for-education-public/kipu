@@ -1,8 +1,12 @@
 // @ts-ignore
 import { createRouter, createWebHistory } from 'vue-router'
+// @ts-ignore
 import Home from '../views/Home.vue'
+// @ts-ignore
 import PanoramaView from "@/views/PanoramaView.vue";
+// @ts-ignore
 import UniversityDetails from "@/views/UniversityDetails.vue";
+// @ts-ignore
 import Profile from "@/views/Profile.vue";
 
 import { useCookies } from "vue3-cookies";
